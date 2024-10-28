@@ -89,7 +89,7 @@ class UserController extends BaseController
         
         $data['entity'] = $this->entity->find($id);
         if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Tidak ditemukan !');
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
         }
         
         $this->entity->update($id, [
