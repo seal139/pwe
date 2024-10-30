@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Sistem Informasi Inventory</title>
+    <title>Sticky Footer Navbar Template · Bootstrap</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/">
 
@@ -37,29 +37,38 @@
 <body class="d-flex flex-column h-100">
     <header>
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="https://www.mercubuana.ac.id">Fasilkom</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/tblproduk">Home <span class="sr-only">(current)</span></a>
-                    </li>                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/tblproduk/contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/tblproduk/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/tblproduk/logout">Logout</a>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="www.mercubuana.ac.id">Fasilkom</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Master Produk</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Report</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
     </header>
 
     <!-- Begin page content -->
