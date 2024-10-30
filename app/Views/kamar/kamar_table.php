@@ -22,7 +22,7 @@
                     
                 <?php endif ?>
 
-                <a href="<?php echo base_url('Kamar/create') ?>" class="btn btn-md btn-success mb-3">Add</a>
+                <a href="<?php echo base_url('KamarController/create') ?>" class="btn btn-md btn-success mb-3">Add</a>
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
@@ -39,8 +39,8 @@
                                 <td><?php echo $row->price ?></td>
                                 <td><?php echo $row->roomCount ?></td>
                                 <td class="text-center">
-                                    <a href="<?php echo base_url('Kamar/edit/'.$row->id) ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?php echo base_url('Kamar/delete/'.$row->id) ?>" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="<?php echo base_url('KamarController/edit/'.$row->id) ?>" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="<?php echo base_url('KamarController/delete/'.$row->id) ?>" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
 
