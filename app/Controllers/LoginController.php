@@ -41,7 +41,7 @@ class LoginController extends BaseController
     function logout()
     {
         session()->destroy();
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/HomeController'));
     }
 
     public function hash_password($password)

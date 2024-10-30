@@ -100,7 +100,8 @@ class KamarController extends BaseController
         ]);
 
         session()->setFlashdata('message', 'Success');
-        return redirect()->to('/Kamar');
+        return redirect()->to(base_url('/KamarController'));
+       
     }
 
     public function saveOnCreate()
@@ -143,7 +144,7 @@ class KamarController extends BaseController
         ]);
 
         session()->setFlashdata('message', 'Success');
-        return redirect()->to('/Kamar');
+        return redirect()->to(base_url('/KamarController'));
     }
    
 }
