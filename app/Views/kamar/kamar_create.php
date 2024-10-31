@@ -16,7 +16,7 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <form method="post" action="<?= base_url('Kamar/saveOnCreate') ?>">
+            <form method="post" action="<?= base_url('KamarController/saveOnCreate') ?>">
                 <?= csrf_field(); ?>
 
                 <div class="form-group">

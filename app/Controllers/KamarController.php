@@ -17,7 +17,7 @@ class KamarController extends BaseController
      */
     public function index()
     {
-        $data['entity'] = $this->entity->findAll();       
+        $data['entity'] = $this->entity->findAll();
 
         return view('kamar/kamar_table', $data);
     }
@@ -70,7 +70,7 @@ class KamarController extends BaseController
                     'required' => '{field} is required field'
                 ]
             ],
-            'descirption' => [
+            'description' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} is required field'
@@ -95,7 +95,7 @@ class KamarController extends BaseController
         $this->entity->update($id, [            
             'type'          => $this->request->getVar('type'),
             'price'         => $this->request->getVar('price'),
-            'descirption'   => $this->request->getVar('descirption'),
+            'description'   => $this->request->getVar('description'),
             'roomCount'     => $this->request->getVar('roomCount')  
         ]);
 
@@ -119,7 +119,7 @@ class KamarController extends BaseController
                     'required' => '{field} is required field'
                 ]
             ],
-            'descirption' => [
+            'description' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} is required field'
@@ -139,7 +139,7 @@ class KamarController extends BaseController
         $this->entity->insert([
             'type'          => $this->request->getVar('type'),
             'price'         => $this->request->getVar('price'),
-            'descirption'   => $this->request->getVar('descirption'),
+            'description'   => $this->request->getVar('description'),
             'roomCount'     => $this->request->getVar('roomCount')            
         ]);
 

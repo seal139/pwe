@@ -16,27 +16,27 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <form method="post" action="<?= base_url('Kamar/saveOnEdit/' . $entity->id) ?>">
+            <form method="post" action="<?= base_url('KamarController/saveOnEdit/' . $entity->id) ?>">
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
                     <label for="type">Room Type</label>
-                    <input type="text" class="form-control" id="type" name="type" value="<?= old('type'); ?>">
+                    <input type="text" class="form-control" id="type" name="type" value="<?= $entity->type; ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" value="<?= old('price'); ?>">
+                    <input type="text" class="form-control" id="price" name="price" value="<?= $entity->price; ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="description" value="<?= old('description') ?>" />
+                    <input type="text" class="form-control" id="description" name="description" value="<?= $entity->description; ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="roomCount">Room Count</label>
-                    <input type="text" class="form-control" id="roomCount" name="roomCount" value="<?= old('roomCount') ?>" />
+                    <input type="text" class="form-control" id="roomCount" name="roomCount" value="<?= $entity->roomCount; ?>" />
                 </div>                  
 
                 <div class="form-group">

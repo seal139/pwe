@@ -10,6 +10,7 @@
     <title>Sticky Footer Navbar Template · Bootstrap</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -29,6 +30,34 @@
                 font-size: 3.5rem;
             }
         }
+
+        .center-container {
+            display: flex; /* Center vertically */
+            justify-content: center; /* Optional: center horizontally */
+            height: 30px; /* Full viewport height, adjust as needed */
+        }
+
+        
+        .action-button-blue {
+            color: #3A79FC;
+        }
+
+        .action-button-red {
+            color: #D33F49;
+        }
+
+        .action-button-red:click {
+            color: #DC3545; /* Color change on hover */
+        }
+
+        .action-button {
+            width: 20px;
+            margin-left: 7px;
+            margin-right: 7px;
+            height: 20px;
+        }
+
+
     </style>
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">

@@ -28,22 +28,35 @@
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Room Type</th>
-                            <th>Price</th>
-                            <th>Room Count</th>
-                            <th>Action</th>
+                            <th style="width: 120px"></th>
+                            <th style="width: 55%">Room Type</th>
+                            <th style="width: 30%">Price</th>
+                            <th style="width: 15%">Room Count</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <?php $nomor = 1;
-                    foreach ($entity as $row) : ?>
-                                <td><?php echo $row->type ?></td>
-                                <td><?php echo $row->price ?></td>
-                                <td><?php echo $row->roomCount ?></td>
-                                <td class="text-center">
-                                    <a href="<?php echo base_url('KamarController/edit/'.$row->id) ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?php echo base_url('KamarController/delete/'.$row->id) ?>" class="btn btn-sm btn-danger">Delete</a>
+                            foreach ($entity as $row) : ?>
+                                <td class="text-right">
+                                    <div class = "center-container">
+                                        <div class="fa-stack action-button">
+                                            <a href="<?php echo base_url('KamarController/delete/'.$row->id) ?>">
+                                                <i class="fa fa-trash fa-stack-1x fa-inverse action-button-red action-button"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="fa-stack action-button">
+                                            <a href="<?php echo base_url('KamarController/edit/'.$row->id) ?>">
+                                            <i class="fa fa-pencil fa-stack-1x fa-inverse action-button-blue action-button"></i>
+                                            </a>
+                                        </div>
+                                    </div>                                                          
                                 </td>
+
+                                <td><div class="fa-stack"><?php echo $row->type ?></div></td>
+                                <td><div class="fa-stack"><?php echo $row->price ?></div></td>
+                                <td><div class="fa-stack"><?php echo $row->roomCount ?></div></td>          
                             </tr>
 
                         <?php endforeach ?>
