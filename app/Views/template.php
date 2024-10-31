@@ -44,27 +44,24 @@
                 <a class="nav-link" href="www.mercubuana.ac.id">Fasilkom</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Master Produk</a>
+                <a class="nav-link" href="/FasilitasController">Facility</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Report</a>
+                <a class="nav-link" href="/KamarController">Room</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="/BookingController">Booking</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/TamuController">Guest</a>
             </li>
         </ul>
     </div>
     
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">            
             <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login/logout">Logout</a>
+                <a class="nav-link" href="/LoginController/logout">Logout</a>
             </li>
         </ul>
     </div>
