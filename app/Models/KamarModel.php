@@ -8,6 +8,7 @@ class KamarModel extends Model
 {
     protected $table = 'tblkamar';
     protected $primaryKey = 'id';
+    protected $returnType       = 'object';
 
     protected $allowedFields = [
         'tipe_kamar',
@@ -19,11 +20,26 @@ class KamarModel extends Model
 
     // Validation rules can be added here
     protected $validationRules = [
-        'tipe_kamar' => 'required|min_length[3]|max_length[10]',
-        'harga' => 'required|numeric',
-        'deskripsi' => 'required|max_length[50]',
-        'jumlah_kamar' => 'required|integer|greater_than[0]',
-        'gambar' => 'max_size[gambar,1024]|ext_in[gambar,jpg,png,jpeg]' // Assuming file upload is handled
+        'tipe_kamar' => [
+            'label' => 'Room Type', // Custom label for the validation message
+            'rules' => 'required|min_length[3]|max_length[10]',
+        ],
+
+        'harga' => [
+            'label' => 'Price', // Custom label for the validation message
+            'rules' => 'required|numeric',
+        ],
+
+        'deskripsi' => [
+            'label' => 'Description', // Custom label for the validation message
+            'rules' => 'required|max_length[50]',
+        ],
+
+        'jumlah_kamar' => [
+            'label' => 'Room Count', // Custom label for the validation message
+            'rules' => 'required|integer|greater_than[0]',
+        ],
+        #'gambar' => 'max_size[gambar,1024]|ext_in[gambar,jpg,png,jpeg]' // Assuming file upload is handled
     ];
 
     // Validation messages can be added here

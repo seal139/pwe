@@ -21,22 +21,22 @@
 
                 <div class="form-group">
                     <label for="type">Room Type</label>
-                    <input type="text" class="form-control" id="type" name="type" value="<?= old('type'); ?>">
+                    <input type="text" class="form-control" id="type" name="type">
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" value="<?= old('price'); ?>">
+                    <input type="text" class="form-control" id="price" name="price">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="description" value="<?= old('description') ?>" />
+                    <input type="text" class="form-control" id="description" name="description" />
                 </div>
 
                 <div class="form-group">
                     <label for="roomCount">Room Count</label>
-                    <input type="text" class="form-control" id="roomCount" name="roomCount" value="<?= old('roomCount') ?>" />
+                    <input type="text" class="form-control" id="roomCount" name="roomCount" />
                 </div>
                 
 
@@ -48,5 +48,15 @@
         </div>
     </div>
 </div>
+<?php if (session()->has('errors')): ?>
+    <div class="alert alert-danger">
+        <ul>
+            <?php foreach (session('errors') as $error): ?>
+                <li><?= esc($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
 <?= $this->endSection('content'); ?>
 

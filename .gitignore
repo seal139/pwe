@@ -41,7 +41,7 @@ $RECYCLE.BIN/
 #-------------------------
 # These should never be under version control,
 # as it poses a security risk.
-env
+.env
 .vagrant
 Vagrantfile
 
@@ -129,3 +129,5 @@ nb-configuration.xml
 *Zone.Identifier
 /vendor/composer
 /vendor
+composer.lock
+app/config

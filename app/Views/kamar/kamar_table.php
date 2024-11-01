@@ -54,9 +54,9 @@
                                     </div>                                                          
                                 </td>
 
-                                <td><div class="fa-stack"><?php echo $row->type ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->price ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->roomCount ?></div></td>          
+                                <td><div class="fa-stack"><?php echo $row->tipe_kamar ?></div></td>
+                                <td><div class="fa-stack"><?php echo $row->harga ?></div></td>
+                                <td><div class="fa-stack"><?php echo $row->jumlah_kamar ?></div></td>          
                             </tr>
 
                         <?php endforeach ?>
