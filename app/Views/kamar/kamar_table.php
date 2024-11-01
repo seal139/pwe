@@ -39,6 +39,7 @@
                     <tbody>
                         <?php $nomor = 1;
                             foreach ($entity as $row) : ?>
+                            <tr>
                                 <td class="text-right">
                                     <div class = "center-container">
                                         <div class="fa-stack action-button">
@@ -47,14 +48,13 @@
                                             </a>
                                         </div>
 
-                                        <div class="fa-stack action-button edit-button" id="id<?= $row->id ?>">                                                                                      
+                                        <div class="fa-stack action-button edit-button" id="id<?= $row->id ?>"> 
                                             <i class="fa fa-pencil fa-stack-1x fa-inverse action-button-blue action-button"></i>
-                                            </a>
                                         </div>
                                     </div>                                                          
                                 </td>
 
-                                <td><div class="fa-stack"><?php echo $row->tipe_kamar ?></div></td>
+                                <td><div class="fa-stack view-button" id="vw<?= $row->id ?>"><?php echo $row->tipe_kamar ?></div></td>
                                 <td><div class="fa-stack"><?php echo $row->harga ?></div></td>
                                 <td><div class="fa-stack"><?php echo $row->jumlah_kamar ?></div></td>          
                             </tr>
@@ -106,6 +106,15 @@
             // Event handler to trigger the AJAX call and show the modal
             $('#add-button').on('click', function() {
                 const targetUrl = '<?= base_url("KamarController/create") ?>'; // Set the URL you want to call
+                loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
+                $('#myModal').show(); // Show the modal
+            });
+
+            $('.view-button').on('click', function() {
+                var elementId = $(this).attr('id');
+                var sanitizedId = elementId.substring(2);
+
+                const targetUrl = '<?= base_url("KamarController/view/") ?>' + sanitizedId; // Construct the URL
                 loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
                 $('#myModal').show(); // Show the modal
             });

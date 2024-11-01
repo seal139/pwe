@@ -24,7 +24,8 @@ class KamarController extends BaseController
 
     public function view($id)
     {
-
+        $data['entity'] = $this->entity->find($id);
+        return view('kamar/kamar_view', $data);
     }
 
     public function create()
@@ -56,52 +57,29 @@ class KamarController extends BaseController
     }
 
     public function saveOnEdit($id)
-    {
-        if (!$this->validate([
-            'tipe_kamar' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} is required field'
-                ]
-            ],
-            'harga' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} is required field'
-                ]
-            ],
-            'deskripsi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} is required field'
-                ]
-            ],
-            'roomCount' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} is required field'
-                ]
-            ],         
-        ])) {
-            session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back()->withInput();
-        }
-        
-        $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-        
-        $this->entity->update($id, [            
-            'tipe_kamar'          => $this->request->getPost('type'),
-            'harga'         => $this->request->getPost('price'),
-            'deskripsi'   => $this->request->getPost('description'),
-            'jumlah_kamar'     => $this->request->getPost('roomCount')  
-        ]);
+    {       
+        $model = new KamarModel();
 
-        session()->setFlashdata('message', 'Success');
-        return redirect()->to(base_url('/KamarController'));
-       
+        $data = [
+            'id' => $id,
+            'tipe_kamar' => $this->request->getPost('type'),
+            'harga' => $this->request->getPost('price'),
+            'deskripsi' => $this->request->getPost('description'),
+            'jumlah_kamar' => $this->request->getPost('roomCount'),
+        ];
+
+        if (!$model->save($data)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
+        }
+
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room updated successfully.',
+        ]);       
     }
 
     public function saveOnCreate()
@@ -117,11 +95,17 @@ class KamarController extends BaseController
         ];
 
         if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
         }
 
-        return redirect()->to(base_url('/KamarController'))->with('success', 'Kamar added successfully.');
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room added successfully.',
+        ]);       
     }
    
 }

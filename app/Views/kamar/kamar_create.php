@@ -14,7 +14,7 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <form method="post" action="<?= base_url('KamarController/saveOnCreate') ?>">
+            <form id="create">
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
@@ -43,17 +43,49 @@
                 </div>
 
             </form>
+
+            <div id="responseMessage"></div>
         </div>
     </div>
 </div>
-<?php if (session()->has('errors')): ?>
-    <div class="alert alert-danger">
-        <ul>
-            <?php foreach (session('errors') as $error): ?>
-                <li><?= esc($error) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
+
+<script>
+    $(document).ready(function() {
+        $('#create').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Serialize the form data
+            const formData = $(this).serialize();
+
+            $.ajax({
+                url: '<?= base_url('KamarController/saveOnCreate') ?>', // Adjust the URL as necessary
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success) {
+                        // Handle success
+                        $('#responseMessage').html('<div class="alert alert-success">' + data.message + '</div>');
+                        setTimeout(function() {
+                            window.location.href = "<?= base_url('KamarController') ?>";
+                        }, 1000)                   
+                    } else {
+                        // Handle errors returned from the server
+                        let errorMessages = '<div class="alert alert-danger"><ul>';
+                        $.each(data.errors, function(index, error) {
+                            errorMessages += '<li>' + error + '</li>';
+                        });
+                        errorMessages += '</ul></div>';
+                        $('#responseMessage').html(errorMessages);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error:', textStatus, errorThrown);
+                    $('#responseMessage').html('<div class="alert alert-danger">An error occurred while saving.</div>');
+                }
+            });
+        });
+    });
+</script>
 
 
