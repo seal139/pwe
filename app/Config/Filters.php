@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'interceptor'   => \App\Filters\SessionInterceptor::class,
     ];
 
     /**
@@ -69,6 +70,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+            'interceptor',
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
