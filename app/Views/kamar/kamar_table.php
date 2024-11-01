@@ -24,7 +24,8 @@
                     
                 <?php endif ?>
 
-                <a href="<?php echo base_url('KamarController/create') ?>" class="btn btn-md btn-success mb-3">Add</a>
+                <button id="add-button" class="btn btn-md btn-success mb-3">Add</button>
+
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
@@ -46,8 +47,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="fa-stack action-button">
-                                            <a href="<?php echo base_url('KamarController/edit/'.$row->id) ?>">
+                                        <div class="fa-stack action-button edit-button" id="id<?= $row->id ?>">                                                                                      
                                             <i class="fa fa-pencil fa-stack-1x fa-inverse action-button-blue action-button"></i>
                                             </a>
                                         </div>
@@ -72,6 +72,55 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script>
+         $(document).ready(function() {
+           
+            // Method to call the provided URL and append the content to a target div
+            function loadContentFromUrl(url, targetDiv) {
+                $.ajax({
+                    url: url, // The target URL provided as parameter
+                    type: 'GET', // Use 'POST' if needed
+                    success: function(data) {
+                        $(targetDiv).html(data); // Load the HTML content into the target div
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', status, error); // Log errors if any
+                    }
+                });
+            }
+        
+            // Close the modal when the close button is clicked
+            $('.close').on('click', function() {
+                $('#myModal').hide(); // Hide the modal
+            });
+
+            // Close the modal when clicking outside of the modal content
+            $(window).on('click', function(event) {
+                if ($(event.target).is('#myModal')) {
+                    $('#myModal').hide(); // Hide the modal
+                }
+            });
+        
+
+            // Event handler to trigger the AJAX call and show the modal
+            $('#add-button').on('click', function() {
+                const targetUrl = '<?= base_url("KamarController/create") ?>'; // Set the URL you want to call
+                loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
+                $('#myModal').show(); // Show the modal
+            });
+
+            $('.edit-button').on('click', function() {
+                var elementId = $(this).attr('id');
+                var sanitizedId = elementId.substring(2);
+
+                const targetUrl = '<?= base_url("KamarController/edit/") ?>' + sanitizedId; // Construct the URL
+                loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
+                $('#myModal').show(); // Show the modal
+            });
+
+        });
+    </script>
   </body>
 </html>
 <?= $this->endSection() ?>

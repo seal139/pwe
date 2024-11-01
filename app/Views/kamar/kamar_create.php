@@ -1,5 +1,3 @@
-<?= $this->extend('template'); ?>
-<?= $this->section('content'); ?>
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -58,5 +56,4 @@
     </div>
 <?php endif; ?>
 
-<?= $this->endSection('content'); ?>
 

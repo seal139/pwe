@@ -57,7 +57,43 @@
             height: 20px;
         }
 
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+        }
 
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto; /* Center the modal */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Set width to 50% of the viewport */
+            max-width: 800px; /* Optional max width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+            border-radius: 5px; /* Optional rounded corners */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
@@ -99,8 +135,17 @@
 
     <!-- Begin page content -->
     <main role="main" class="flex-shrink-0">
-        <?= $this->renderSection('content') ?>
+        <?= $this->renderSection('content') ?>        
     </main>
+
+     <!-- Modal Structure -->
+     <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div id="modal-body">
+                    <!-- AJAX loaded content will be appended here -->
+                </div>
+            </div>
+        </div>
 
     <footer class="footer mt-auto py-3">
         <div class="container">
@@ -109,6 +154,10 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://getbootstrap.com/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+    </script>
 </body>
 
 </html>

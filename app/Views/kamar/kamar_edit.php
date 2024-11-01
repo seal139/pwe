@@ -1,5 +1,3 @@
-<?= $this->extend('template'); ?>
-<?= $this->section('content'); ?>
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -21,22 +19,22 @@
 
                 <div class="form-group">
                     <label for="type">Room Type</label>
-                    <input type="text" class="form-control" id="type" name="type" value="<?= $entity->type; ?>">
+                    <input type="text" class="form-control" id="type" name="type" value="<?= $entity->tipe_kamar; ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" value="<?= $entity->price; ?>">
+                    <input type="text" class="form-control" id="price" name="price" value="<?= $entity->harga; ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="description" value="<?= $entity->description; ?>" />
+                    <input type="text" class="form-control" id="description" name="description" value="<?= $entity->deskripsi; ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="roomCount">Room Count</label>
-                    <input type="text" class="form-control" id="roomCount" name="roomCount" value="<?= $entity->roomCount; ?>" />
+                    <input type="text" class="form-control" id="roomCount" name="roomCount" value="<?= $entity->jumlah_kamar; ?>" />
                 </div>                  
 
                 <div class="form-group">
@@ -47,5 +45,3 @@
         </div>
     </div>
 </div>
-<?= $this->endSection('content'); ?>
-
