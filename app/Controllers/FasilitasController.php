@@ -2,47 +2,62 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Controller;
 use App\Models\FasilitasModel;
 
 class FasilitasController extends BaseController
 {
+    protected $entity;
+
+    function __construct()
+    {
+        $this->entity = new FasilitasModel();
+    }
+
+    /**
+     * index function
+     */
     public function index()
     {
-        $model = new FasilitasModel();
-        $data['fasilitas'] = $model->findAll();
-        return view('fasilitas_list', $data);
+        $data['entity'] = $this->entity->findAll();
+
+        return view('fasilitas/fasilitas_table', $data);
+    }
+
+    public function view($id)
+    {
+        $data['entity'] = $this->entity->find($id);
+        return view('fasilitas/fasilitas_view', $data);
     }
 
     public function create()
     {
-        return view('fasilitas_form');
-    }
-
-    public function store()
-    {
-        $model = new FasilitasModel();
-
-        $data = [
-            'nama_fasilitas' => $this->request->getPost('nama_fasilitas'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-        ];
-
-        if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        }
-
-        return redirect()->to('/fasilitas')->with('success', 'Fasilitas added successfully.');
+        return view('fasilitas/fasilitas_create');
     }
 
     public function edit($id)
     {
-        $model = new FasilitasModel();
-        $data['fasilitas'] = $model->find($id);
-        return view('fasilitas_form', $data);
+        //$tblproduk = new TblprodukModel();
+        $data['entity'] = $this->entity->find($id);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
+        }
+
+        return view('fasilitas/fasilitas_edit', $data);
     }
 
-    public function update($id)
+    public function delete($id)
+    {
+        $data['entity'] = $this->entity->find($id);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
+        }
+
+        $this->entity->delete($id);
+        return redirect()->back()->with('success', 'Deleted!');
+    }
+
+    public function saveOnEdit($id)
     {
         $model = new FasilitasModel();
 
@@ -53,17 +68,40 @@ class FasilitasController extends BaseController
         ];
 
         if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
         }
 
-        return redirect()->to('/fasilitas')->with('success', 'Fasilitas updated successfully.');
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room updated successfully.',
+        ]);
     }
 
-    public function delete($id)
+    public function saveOnCreate()
     {
-        $model = new FasilitasModel();
-        $model->delete($id);
-        return redirect()->to('/fasilitas')->with('success', 'Fasilitas deleted successfully.');
+        $model = new fasilitasModel();
+
+        $data = [
+            'nama_fasilitas' => $this->request->getPost('nama_fasilitas'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            #'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
+        ];
+
+        if (!$model->save($data)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
+        }
+
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Tamu added successfully.',
+        ]);
     }
 }

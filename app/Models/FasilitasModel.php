@@ -8,7 +8,7 @@ class FasilitasModel extends Model
 {
     protected $table = 'tblfasilitas';
     protected $primaryKey = 'id';
-
+    protected $returnType       = 'object';
     protected $allowedFields = [
         'nama_fasilitas',
         'deskripsi'
