@@ -1,71 +1,110 @@
-<?php
+<?php namespace App\Controllers;
 
-namespace App\Controllers;
-
+use CodeIgniter\Controller;
 use App\Models\TamuModel;
 
-class TamuController extends BaseController
+class TamuController extends BaseController 
 {
+    protected $entity;
+ 
+    function __construct()
+    {
+        $this->entity = new TamuModel();
+    }
+
+    /**
+     * index function
+     */
     public function index()
     {
-        $model = new TamuModel();
-        $data['tamu'] = $model->findAll();
-        return view('tamu_list', $data);
+        $data['entity'] = $this->entity->findAll();
+
+        return view('tamu/tamu_table', $data);
+    }
+
+    public function view($id)
+    {
+        $data['entity'] = $this->entity->find($id);
+        return view('tamu/tamu_view', $data);
     }
 
     public function create()
     {
-        return view('tamu_form');
-    }
-
-    public function store()
-    {
-        $model = new TamuModel();
-
-        $data = [
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
-            'no_telpon' => $this->request->getPost('no_telpon'),
-        ];
-
-        if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        }
-
-        return redirect()->to('/tamu')->with('success', 'Tamu added successfully.');
+        return view('tamu/tamu_create');
     }
 
     public function edit($id)
     {
-        $model = new TamuModel();
-        $data['tamu'] = $model->find($id);
-        return view('tamu_form', $data);
+        //$tblproduk = new TblprodukModel();
+        $data['entity'] = $this->entity->find($id);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
+        }
+
+        return view('tamu/tamu_edit', $data);
     }
 
-    public function update($id)
+    public function delete($id)
     {
+        $data['entity'] = $this->entity->find($id);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
+        }
+        
+        $this->entity->delete($id);      
+        return redirect()->back()->with('success', 'Deleted!');
+        
+    }
+
+    public function saveOnEdit($id)
+    {       
         $model = new TamuModel();
 
         $data = [
             'id' => $id,
             'nama' => $this->request->getPost('nama'),
             'email' => $this->request->getPost('email'),
-            'no_telpon' => $this->request->getPost('no_telpon'),
+            'no_telpon' => $this->request->getPost('notelepon'),
         ];
 
         if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
         }
 
-        return redirect()->to('/tamu')->with('success', 'Tamu updated successfully.');
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room updated successfully.',
+        ]);       
     }
 
-    public function delete($id)
+    public function saveOnCreate()
     {
-        $model = new TamuModel();
-        $model->delete($id);
-        return redirect()->to('/tamu')->with('success', 'Tamu deleted successfully.');
+        $model = new tamuModel();
+
+        $data = [
+            'id' => $this->request->getPost('id'),
+            'nama' => $this->request->getPost('nama'),
+            'email' => $this->request->getPost('email'),
+            'no_telpon' => $this->request->getPost('notelepon'),
+            #'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
+        ];
+
+        if (!$model->save($data)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
+        }
+
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Tamu added successfully.',
+        ]);       
     }
+   
 }
