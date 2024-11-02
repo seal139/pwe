@@ -1,75 +1,111 @@
-<?php
+<?php namespace App\Controllers;
 
-namespace App\Controllers;
-
+use CodeIgniter\Controller;
 use App\Models\KamarModel;
 
-class KamarController extends BaseController
+class KamarController extends BaseController 
 {
+    protected $entity;
+ 
+    function __construct()
+    {
+        $this->entity = new KamarModel();
+    }
+
+    /**
+     * index function
+     */
     public function index()
     {
-        $model = new KamarModel();
-        $data['kamars'] = $model->findAll();
-        return view('kamar_list', $data);
+        $data['entity'] = $this->entity->findAll();
+
+        return view('kamar/kamar_table', $data);
+    }
+
+    public function view($id)
+    {
+        $data['entity'] = $this->entity->find($id);
+        return view('kamar/kamar_view', $data);
     }
 
     public function create()
     {
-        return view('kamar_form');
-    }
-
-    public function store()
-    {
-        $model = new KamarModel();
-
-        $data = [
-            'tipe_kamar' => $this->request->getPost('tipe_kamar'),
-            'harga' => $this->request->getPost('harga'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'jumlah_kamar' => $this->request->getPost('jumlah_kamar'),
-            'gambar' => $this->request->getFile('gambar')->getName(), 
-        ];
-
-        if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        }
-
-        return redirect()->to('/kamar')->with('success', 'Kamar added successfully.');
+        return view('kamar/kamar_create');
     }
 
     public function edit($id)
     {
-        $model = new KamarModel();
-        $data['kamar'] = $model->find($id);
-        return view('kamar_form', $data);
-    }
-
-    public function update($id)
-    {
-        $model = new KamarModel();
-
-        $data = [
-            'id' => $id,
-            'tipe_kamar' => $this->request->getPost('tipe_kamar'),
-            'harga' => $this->request->getPost('harga'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'jumlah_kamar' => $this->request->getPost('jumlah_kamar'),
-            'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
-        ];
-
-        if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+        //$tblproduk = new TblprodukModel();
+        $data['entity'] = $this->entity->find($id);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
         }
 
-        return redirect()->to('/kamar')->with('success', 'Kamar updated successfully.');
+        return view('kamar/kamar_edit', $data);
     }
 
     public function delete($id)
     {
-        $model = new KamarModel();
-        $model->delete($id);
-        return redirect()->to('/kamar')->with('success', 'Kamar deleted successfully.');
+        $data['entity'] = $this->entity->find($id);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
+        }
+        
+        $this->entity->delete($id);      
+        return redirect()->back()->with('success', 'Deleted!');
+        
     }
+
+    public function saveOnEdit($id)
+    {       
+        $model = new KamarModel();
+
+        $data = [
+            'id' => $id,
+            'tipe_kamar' => $this->request->getPost('type'),
+            'harga' => $this->request->getPost('price'),
+            'deskripsi' => $this->request->getPost('description'),
+            'jumlah_kamar' => $this->request->getPost('roomCount'),
+        ];
+
+        if (!$model->save($data)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
+        }
+
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room updated successfully.',
+        ]);       
+    }
+
+    public function saveOnCreate()
+    {
+        $model = new KamarModel();
+
+        $data = [
+            'tipe_kamar' => $this->request->getPost('type'),
+            'harga' => $this->request->getPost('price'),
+            'deskripsi' => $this->request->getPost('description'),
+            'jumlah_kamar' => $this->request->getPost('roomCount'),
+            #'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
+        ];
+
+        if (!$model->save($data)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $model->errors(), // Pass the validation errors
+            ]);
+        }
+
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room added successfully.',
+        ]);       
+    }
+   
 }
