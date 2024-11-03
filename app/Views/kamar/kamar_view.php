@@ -24,7 +24,11 @@
             <div class="form-group">
                 <label for="roomCount">Room Count</label>
                 <label class="form-control"><?= $entity->jumlah_kamar; ?></label>
-            </div>                  
+            </div>
+            
+            <a href="<?= base_url('KamarFasilitasController/detail/' . $entity->id); ?>">
+                Edit Facility
+            </a>
         </div>
     </div>
 </div>

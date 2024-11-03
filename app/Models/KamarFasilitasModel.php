@@ -8,7 +8,8 @@ class KamarFasilitasModel extends Model
 {
     protected $table = 'tblkamarfasilitas';
     protected $primaryKey = ['id_kamar', 'id_fasilitas']; // Composite primary key
-
+    protected $returnType       = 'object';
+    
     protected $allowedFields = [
         'id_kamar',
         'id_fasilitas'

@@ -17,13 +17,12 @@
             <div class="col-md-12">
 
                 <?php if(!empty(session()->getFlashdata('type'))) : ?>
-
-                <div class="alert alert-success">
-                    <?php echo session()->getFlashdata('type');?>
-                </div>
-                    
+                    <div class="alert alert-success">
+                        <?php echo session()->getFlashdata('type');?>
+                    </div>                    
                 <?php endif ?>
             
+                <a class="nav-link" href="/KamarController" style = "float:left">Room > <?= $master->tipe_kamar ?></a> 
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">
                     <div class = "center-container" style= "margin-right: 10px">
                         <span>Page : &nbsp</span>
@@ -41,27 +40,20 @@
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th style="width: 120px"></th>
-                            <th style="width: 55%">Room Type</th>
-                            <th style="width: 30%">Price</th>
-                            <th style="width: 15%">Room Count</th>
-                            
+                            <th></th>
+                            <th style="width: 100%">Facility</th>                            
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             foreach ($entity as $row) : ?>
-                            <tr style="height: 20px">
+                            <tr style="height: 10px">
                                 <td class="text-right">
                                     <div class = "center-container">
                                         <div class="fa-stack action-button">
-                                            <a href="<?php echo base_url('KamarController/delete/'.$row->id) ?>">
+                                            <a href="<?php echo base_url('KamarFasilitasController/delete/'. $row->id_kamar. "/" . $row->id_fasilitas) ?>">
                                                 <i class="fa fa-trash fa-stack-1x fa-inverse action-button-red action-button"></i>
                                             </a>
-                                        </div>
-
-                                        <div class="fa-stack action-button edit-button" id="id<?= $row->id ?>"> 
-                                            <i class="fa fa-pencil fa-stack-1x fa-inverse action-button-blue action-button"></i>
                                         </div>
                                     </div>                                                          
                                 </td>
@@ -71,14 +63,12 @@
                                         <div class="fa-stack action-button">
                                             <i class="fa fa-eye fa-stack-1x fa-inverse action-button-blue action-button">&nbsp</i>
                                         </div>
-                                        <div class="fa-stack view-button" id="vw<?= $row->id ?>">
-                                            <?php echo $row->tipe_kamar ?>
+                                        <div class="fa-stack view-button" id="vw<?= $row->id_kamar. "/" . $row->id_fasilitas ?>">
+                                            <?php echo $facilityName[$row->id_fasilitas] ?>
                                         </div>
                                     </div>
                                     
-                                </td>
-                                <td><div class="fa-stack"><?php echo $row->harga ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->jumlah_kamar ?></div></td>          
+                                </td>  
                             </tr>
 
                         <?php endforeach ?>
@@ -131,7 +121,7 @@
 
             // Event handler to trigger the AJAX call and show the modal
             $('#add-button').on('click', function() {
-                const targetUrl = '<?= base_url("KamarController/create") ?>'; // Set the URL you want to call
+                const targetUrl = '<?= base_url("KamarFasilitasController/create/" . $master->id) ?>' // Set the URL you want to call
                 loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
                 $('#myModal').show(); // Show the modal
             });
@@ -140,20 +130,10 @@
                 var elementId = $(this).attr('id');
                 var sanitizedId = elementId.substring(2);
 
-                const targetUrl = '<?= base_url("KamarController/view/") ?>' + sanitizedId; // Construct the URL
+                const targetUrl = '<?= base_url("KamarFasilitasController/view/") ?>' + sanitizedId; // Construct the URL
                 loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
                 $('#myModal').show(); // Show the modal
             });
-
-            $('.edit-button').on('click', function() {
-                var elementId = $(this).attr('id');
-                var sanitizedId = elementId.substring(2);
-
-                const targetUrl = '<?= base_url("KamarController/edit/") ?>' + sanitizedId; // Construct the URL
-                loadContentFromUrl(targetUrl, '#modal-body'); // Call the method with URL and target div
-                $('#myModal').show(); // Show the modal
-            });
-
         });
     </script>
   </body>

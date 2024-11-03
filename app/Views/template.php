@@ -98,6 +98,14 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        .pagination-links a {
+            margin-right: 10px; /* Adjust the space as needed */
+        }
+
+        li.active {
+            font-weight: bold;
+        }
     </style>
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">

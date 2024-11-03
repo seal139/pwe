@@ -1,51 +1,108 @@
-<?php
+<?php namespace App\Controllers;
 
-namespace App\Controllers;
-
+use CodeIgniter\Controller;
 use App\Models\KamarFasilitasModel;
+use App\Models\KamarModel;
+use App\Models\FasilitasModel;
 
-class KamarFasilitasController extends BaseController
+class KamarFasilitasController extends BaseController 
 {
-    public function index()
+    protected $entity;
+ 
+    function __construct()
     {
-        $model = new KamarFasilitasModel();
-        $data['kamar_fasilitas'] = $model->findAll();
-        return view('kamar_fasilitas_list', $data);
+        $this->entity = new KamarFasilitasModel();
     }
 
-    public function create()
+    /**
+     * index function
+     */
+    public function detail($master)
     {
-        // Load kamar and fasilitas models to populate dropdown options
-        $kamarModel = new KamarModel();
-        $fasilitasModel = new FasilitasModel();
+        $data['entity'] = $this->entity->where('id_kamar', $master)->paginate(6);
+        $data['pager'] = $this->entity->pager;
 
-        $data['kamars'] = $kamarModel->findAll();
-        $data['fasilitas'] = $fasilitasModel->findAll();
+        $masterEntity = new KamarModel();
+        $data['master'] = $masterEntity->find($master);
 
-        return view('kamar_fasilitas_form', $data);
+        $facilityEntity = new FasilitasModel();
+        $facilities = $facilityEntity->findAll();
+
+        foreach ($facilities as $facility) {
+            $facilityName[$facility->id] = $facility->nama_fasilitas;
+            $facilityDesc[$facility->id] = $facility->deskripsi;
+        }
+        
+        $data['facilityName'] = $facilityName;
+        $data['facilityDesc'] = $facilityDesc;
+
+        return view('kamarFasilitas/kamarFasilitas_table', $data);
     }
 
-    public function store()
+    public function view($id1, $id2)
+    {
+        $roomFacility = $this->entity->where('id_kamar', $id1)->where('id_fasilitas', $id2)->first();
+
+        $facility = new FasilitasModel();
+        $facilityEntry = $facility->where('id', $roomFacility->id_fasilitas)->first();
+    
+        $data['name'] = $facilityEntry->nama_fasilitas;
+        $data['description'] = $facilityEntry->deskripsi;
+        
+        return view('kamarFasilitas/kamarFasilitas_view', $data);
+    }
+
+    public function create($master)
+    {
+        $masterEntity = new KamarModel();
+        $data['master'] = $masterEntity->find($master);
+
+        $facilityEntity = new FasilitasModel();
+        $data['facilities'] = $facilityEntity->findAll();
+        
+
+        return view('kamarFasilitas/kamarFasilitas_create', $data);
+    }
+
+    public function delete($id1, $id2)
+    {
+        $data['entity'] = $this->entity->where('id_kamar', $id1)->where('id_fasilitas', $id2);
+        if (empty($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
+        }
+        
+        $this->entity->where('id_kamar', $id1)->where('id_fasilitas', $id2)->delete();      
+        return redirect()->back()->with('success', 'Deleted!');
+        
+    }
+
+
+    public function saveOnCreate()
     {
         $model = new KamarFasilitasModel();
 
         $data = [
-            'id_kamar' => $this->request->getPost('id_kamar'),
-            'id_fasilitas' => $this->request->getPost('id_fasilitas'),
-        ];
+            'id_kamar' => $this->request->getPost('master'),
+            'id_fasilitas' => $this->request->getPost('facility'),
+        ];     
 
-        if (!$model->save($data)) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+        if (!$model->insert($data)) {
+            if($model->errors()){
+                //log_message('error', "jadi error: ".  $model->errors());
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors' => $model->errors(), // Pass the validation errors
+                ]);
+            }
+
+            
         }
 
-        return redirect()->to('/kamar_fasilitas')->with('success', 'Kamar Fasilitas added successfully.');
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Room added successfully.',
+        ]);       
     }
-
-    public function delete($id_kamar, $id_fasilitas)
-    {
-        $model = new KamarFasilitasModel();
-        $model->delete(['id_kamar' => $id_kamar, 'id_fasilitas' => $id_fasilitas]);
-        return redirect()->to('/kamar_fasilitas')->with('success', 'Kamar Fasilitas deleted successfully.');
-    }
+   
 }

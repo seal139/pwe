@@ -17,7 +17,10 @@ class KamarController extends BaseController
      */
     public function index()
     {
-        $data['entity'] = $this->entity->findAll();
+        $data['entity'] = $this->entity->paginate(6);
+    
+        // Pass the pager object to the view
+        $data['pager'] = $this->entity->pager;
 
         return view('kamar/kamar_table', $data);
     }
