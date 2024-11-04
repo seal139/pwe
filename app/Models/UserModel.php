@@ -15,9 +15,9 @@ class UserModel extends Model
      */
     protected $allowedFields = [
         'username',
-        'name',
+        'nama',
         'telp',
-        'mail'
+        'email'
     ];
 }
 

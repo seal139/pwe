@@ -27,7 +27,7 @@ class LoginController extends BaseController
                     'username' => $dataUser->username,
                     'logged_in' => TRUE
                 ]);
-                return redirect()->to(base_url('home'));
+                return redirect()->to(base_url('HomeController'));
             } else {
                 session()->setFlashdata('error', 'Username & Password Salah');
                 return redirect()->back();
@@ -41,7 +41,7 @@ class LoginController extends BaseController
     function logout()
     {
         session()->destroy();
-        return redirect()->to(base_url('/HomeController'));
+        return redirect()->to(base_url('/LoginController'));
     }
 
     public function hash_password($password)

@@ -63,7 +63,7 @@
                 <?php echo session()->getFlashdata('error'); ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= base_url(); ?>/login/process">
+        <form method="post" action="<?= base_url(); ?>HomeController">
             <?= csrf_field(); ?>
             <h1 class="h3 mb-3 fw-normal">Login</h1>
             <input type="text" name="username" id="username" placeholder="Username" class="form-control" required autofocus>
@@ -71,8 +71,8 @@
             <input type="checkbox" onclick="myFunction('password')"> Show Password
             <button type="submit" class="w-100 btn btn-lg btn-primary">Login</button>
             <a class="nav-link" href="<?= base_url('/register/forgot') ?>" target="_blank">Forgot Password</a>
-            <p class="mt-5 mb-3 text-muted">&copy; Toko UMB</p>
-            <a class="nav-link" href="<?= base_url('/register') ?>" target="_blank">Register</a>
+            <p class="mt-5 mb-3 text-muted">&copy; Hotel Mercu</p>
+            <a class="nav-link" href="<?= base_url('/RegisterController') ?>" target="_blank">Register</a>
         </form>
     </main>
 
@@ -82,4 +82,3 @@
 <script src="<?= base_url('js/bootstrap.min.js') ?>"></script>
 
 </html>
-

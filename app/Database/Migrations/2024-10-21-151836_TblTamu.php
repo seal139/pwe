@@ -23,7 +23,7 @@ class TblTamu extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '30'
             ],
-            'notelepon' => [
+            'no_telpon' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '13'
             ],
