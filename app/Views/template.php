@@ -129,17 +129,21 @@
             <li class="nav-item active">
                 <a class="nav-link" href="www.mercubuana.ac.id">Fasilkom</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/BookingController">Booking</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/FasilitasController">Facility</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/KamarController">Room</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/BookingController">Booking</a>
-            </li>
+            </li>            
             <li class="nav-item">
                 <a class="nav-link" href="/TamuController">Guest</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/UserController">User</a>
             </li>
         </ul>
     </div>
