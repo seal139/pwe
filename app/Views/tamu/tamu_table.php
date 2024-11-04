@@ -54,9 +54,9 @@
                                     </div>                                                          
                                 </td>
 
-                                <td><div class="fa-stack view-button" id="vw<?= $row->id ?>"><?php echo $row->nama ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->email ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->no_telpon ?></div></td>          
+                                <td><div class="stack-middle view-button" id="vw<?= $row->id ?>"><?php echo $row->nama ?></div></td>
+                                <td><div class="stack-middle"><?php echo $row->email ?></div></td>
+                                <td><div class="stack-middle"><?php echo $row->no_telpon ?></div></td>          
                             </tr>
 
                         <?php endforeach ?>

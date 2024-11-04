@@ -57,10 +57,10 @@
                                 </td>
 
                                 <td>
-                                    <div class="fa-stack view-button" id="vw<?= $row->id ?>"><?php echo $row->nama_fasilitas ?></div>
+                                    <div class="stack-middle view-button" id="vw<?= $row->id ?>"><?php echo $row->nama_fasilitas ?></div>
                                 </td>
                                 <td>
-                                    <div class="fa-stack"><?php echo $row->deskripsi ?></div>
+                                    <div class="stack-middle"><?php echo $row->deskripsi ?></div>
                                 </td>
                     
                             </tr>

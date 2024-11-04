@@ -11,28 +11,35 @@ class LoginController extends BaseController
         return view('login');
     }
 
-    public function process()
+    public function login()
     {
         $loginmodel = new UserModel();
-        $username = $this->request->getVar('username');
-        $password = $this->request->getVar('password');
+
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
 
         $dataUser = $loginmodel->where([
             'username' => $username,
         ])->first();
+        
         if ($dataUser) {
-            if ($password == $dataUser->password) {
+
+            if (password_verify($password, $dataUser->password)) {
 
                 session()->set([
-                    'username' => $dataUser->username,
+                    'name'  => $dataUser->nama,
+                    'role'      => $dataUser->role,
                     'logged_in' => TRUE
                 ]);
+
                 return redirect()->to(base_url('HomeController'));
-            } else {
+            } 
+            else {
                 session()->setFlashdata('error', 'Username & Password Salah');
                 return redirect()->back();
             }
-        } else {
+        }
+        else {
             session()->setFlashdata('error', 'Username & Password Tidak Ada');
             return redirect()->back();
         }

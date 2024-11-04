@@ -63,7 +63,7 @@
                                         <div class="fa-stack action-button">
                                             <i class="fa fa-eye fa-stack-1x fa-inverse action-button-blue action-button">&nbsp</i>
                                         </div>
-                                        <div class="fa-stack view-button" id="vw<?= $row->id_kamar. "/" . $row->id_fasilitas ?>">
+                                        <div class="stack-middle view-button" id="vw<?= $row->id_kamar. "/" . $row->id_fasilitas ?>">
                                             <?php echo $facilityName[$row->id_fasilitas] ?>
                                         </div>
                                     </div>

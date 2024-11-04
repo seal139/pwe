@@ -37,7 +37,7 @@ class SessionInterceptor implements FilterInterface
             if($controllerName == "LoginController") {
                 // got to know if user access logout. this should not be a blocker
                 if (!(isset($uri[1]) && $uri[1] == "logout")) {
-                   // return redirect()->to(base_url('/HomeController'));
+                   //return redirect()->to(base_url('/HomeController'));
                 }
             }  
         }      

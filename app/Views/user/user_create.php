@@ -16,37 +16,72 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <form method="post" action="<?= base_url('User/saveOnCreate') ?>">
+
+            <form id="create">
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="<?= old('username'); ?>">
+                    <input type="text" class="form-control" id="username" name="username"/>
                 </div>
 
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<?= old('name'); ?>">
+                    <input type="text" class="form-control" id="name" name="name"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="telp">Telp</label>
-                    <input type="text" class="form-control" id="telp" name="telp" value="<?= old('telp') ?>" />
-                </div>
-
-                <div class="form-group">
-                    <label for="mail">Email</label>
-                    <input type="text" class="form-control" id="mail" name="mail" value="<?= old('mail') ?>" />
-                </div>
-                
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"/>
+                </div>               
 
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-info" />
                 </div>
 
             </form>
+
+            <div id="responseMessage"></div>
         </div>
     </div>
 </div>
-<?= $this->endSection('content'); ?>
+
+<script>
+    $(document).ready(function() {
+        $('#create').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Serialize the form data
+            const formData = $(this).serialize();
+
+            $.ajax({
+                url: '<?= base_url('UserController/saveOnCreate') ?>', // Adjust the URL as necessary
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success) {
+                        // Handle success
+                        $('#responseMessage').html('<div class="alert alert-success">' + data.message + '</div>');
+                        setTimeout(function() {
+                            window.location.href = "<?= base_url('UserController') ?>";
+                        }, 1000)                   
+                    } else {
+                        // Handle errors returned from the server
+                        let errorMessages = '<div class="alert alert-danger"><ul>';
+                        $.each(data.errors, function(index, error) {
+                            errorMessages += '<li>' + error + '</li>';
+                        });
+                        errorMessages += '</ul></div>';
+                        $('#responseMessage').html(errorMessages);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error:', textStatus, errorThrown);
+                    $('#responseMessage').html('<div class="alert alert-danger">An error occurred while saving.</div>');
+                }
+            });
+        });
+    });
+</script>
 

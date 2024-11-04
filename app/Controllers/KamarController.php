@@ -12,15 +12,10 @@ class KamarController extends BaseController
         $this->entity = new KamarModel();
     }
 
-    /**
-     * index function
-     */
     public function index()
     {
-        $data['entity'] = $this->entity->paginate(6);
-    
-        // Pass the pager object to the view
-        $data['pager'] = $this->entity->pager;
+        $data['entity'] = $this->entity->paginate(6);    
+        $data['pager']  = $this->entity->pager;
 
         return view('kamar/kamar_table', $data);
     }
@@ -64,17 +59,17 @@ class KamarController extends BaseController
         $model = new KamarModel();
 
         $data = [
-            'id' => $id,
-            'tipe_kamar' => $this->request->getPost('type'),
-            'harga' => $this->request->getPost('price'),
-            'deskripsi' => $this->request->getPost('description'),
+            'id'           => $id,
+            'tipe_kamar'   => $this->request->getPost('type'),
+            'harga'        => $this->request->getPost('price'),
+            'deskripsi'    => $this->request->getPost('description'),
             'jumlah_kamar' => $this->request->getPost('roomCount'),
         ];
 
         if (!$model->save($data)) {
             return $this->response->setJSON([
                 'success' => false,
-                'errors' => $model->errors(), // Pass the validation errors
+                'errors'  => $model->errors(), // Pass the validation errors
             ]);
         }
 
@@ -90,17 +85,16 @@ class KamarController extends BaseController
         $model = new KamarModel();
 
         $data = [
-            'tipe_kamar' => $this->request->getPost('type'),
-            'harga' => $this->request->getPost('price'),
-            'deskripsi' => $this->request->getPost('description'),
+            'tipe_kamar'   => $this->request->getPost('type'),
+            'harga'        => $this->request->getPost('price'),
+            'deskripsi'    => $this->request->getPost('description'),
             'jumlah_kamar' => $this->request->getPost('roomCount'),
-            #'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
         ];
 
         if (!$model->save($data)) {
             return $this->response->setJSON([
                 'success' => false,
-                'errors' => $model->errors(), // Pass the validation errors
+                'errors'  => $model->errors(), // Pass the validation errors
             ]);
         }
 

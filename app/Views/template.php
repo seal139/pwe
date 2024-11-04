@@ -106,6 +106,15 @@
         li.active {
             font-weight: bold;
         }
+
+        .stack-middle {
+            position: relative;
+            display: inline-block;
+            height: 2em;
+            line-height: 2em;
+            vertical-align: middle;
+        }
+
     </style>
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
@@ -161,7 +170,7 @@
 
     <footer class="footer mt-auto py-3">
         <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
+            <span class="text-muted"><?=session()->get('name') ?></span>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

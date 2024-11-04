@@ -8,53 +8,36 @@ class TblLogin extends Migration
 {
     public function up()
     {
-        // Membuat kolom/field untuk tabel tblproduk
-
-        /* $this->forge->addField([
-            'username'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 20
-            ],
-            'password'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 20
-            ],
-            
-
-        ]); */
-
         $this->forge->addField([
-            'username'           => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 20
+            'id'          => [
+                'type'           => 'INT',
+                'constraint'     => 6,
+                'unsigned'       => true,
+                'auto_increment' => true
             ],
-            'password'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 20
+            'username' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 20
             ],
-            'nama'               => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 50
+            'password' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 128
             ],
-            'email'              => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 50
+            'nama'     => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50
             ],
-            'no_telpon'         => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 20
-            ],
+            'role'      => [
+                'type'       => 'INT',
+            ]
         ]);
 
-        // Membuat primary key
-        $this->forge->addKey('username', TRUE);
-
-        // Membuat tabel tblproduk
-        $this->forge->createTable('tbllogin', TRUE);
+        $this->forge->addKey('id', TRUE);
+        $this->forge->createTable('tbluser', TRUE);
     }
 
     public function down()
     {
-        $this->forge->dropTable('tbllogin');
+        $this->forge->dropTable('tbluser');
     }
 }
