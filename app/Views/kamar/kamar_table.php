@@ -17,11 +17,9 @@
             <div class="col-md-12">
 
                 <?php if(!empty(session()->getFlashdata('type'))) : ?>
-
                 <div class="alert alert-success">
                     <?php echo session()->getFlashdata('type');?>
-                </div>
-                    
+                </div>                    
                 <?php endif ?>
             
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">
@@ -33,9 +31,7 @@
                             <?php else: ?>
                                 0
                             <?php endif; ?>
-                        </span>
-
-                        
+                        </span>                        
                     </div>
                 </div>
                 <table class="table table-bordered table-striped">
@@ -44,8 +40,7 @@
                             <th style="width: 120px"></th>
                             <th style="width: 55%">Room Type</th>
                             <th style="width: 30%">Price</th>
-                            <th style="width: 15%">Room Count</th>
-                            
+                            <th style="width: 15%">Room Count</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -85,10 +80,7 @@
                     </tbody>
                 </table>
                 
-                
                 <button id="add-button" class="btn btn-md btn-success mb-3" >Add</button>
-
-
             </div>
         </div>
     </div>

@@ -12,12 +12,10 @@ class TamuController extends BaseController
         $this->entity = new TamuModel();
     }
 
-    /**
-     * index function
-     */
     public function index()
     {
-        $data['entity'] = $this->entity->findAll();
+        $data['entity'] = $this->entity->paginate(6);    
+        $data['pager']  = $this->entity->pager;
 
         return view('tamu/tamu_table', $data);
     }
@@ -35,7 +33,6 @@ class TamuController extends BaseController
 
     public function edit($id)
     {
-        //$tblproduk = new TblprodukModel();
         $data['entity'] = $this->entity->find($id);
         if (empty($data)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
@@ -61,20 +58,19 @@ class TamuController extends BaseController
         $model = new TamuModel();
 
         $data = [
-            'id' => $id,
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
+            'id'        => $id,
+            'nama'      => $this->request->getPost('nama'),
+            'email'     => $this->request->getPost('email'),
             'no_telpon' => $this->request->getPost('notelepon'),
         ];
 
         if (!$model->save($data)) {
             return $this->response->setJSON([
                 'success' => false,
-                'errors' => $model->errors(), // Pass the validation errors
+                'errors'  => $model->errors(), // Pass the validation errors
             ]);
         }
 
-        // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
             'message' => 'Room updated successfully.',
@@ -86,17 +82,16 @@ class TamuController extends BaseController
         $model = new tamuModel();
 
         $data = [
-            'id' => $this->request->getPost('id'),
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
+            'id'        => $this->request->getPost('id'),
+            'nama'      => $this->request->getPost('nama'),
+            'email'     => $this->request->getPost('email'),
             'no_telpon' => $this->request->getPost('notelepon'),
-            #'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
         ];
 
         if (!$model->save($data)) {
             return $this->response->setJSON([
                 'success' => false,
-                'errors' => $model->errors(), // Pass the validation errors
+                'errors'  => $model->errors(), // Pass the validation errors
             ]);
         }
 

@@ -32,9 +32,7 @@
                             <?php else: ?>
                                 0
                             <?php endif; ?>
-                        </span>
-
-                        
+                        </span>                        
                     </div>
                 </div>
                 <table class="table table-bordered table-striped">
@@ -74,11 +72,7 @@
                         <?php endforeach ?>
                     </tbody>
                 </table>
-                
-                
                 <button id="add-button" class="btn btn-md btn-success mb-3" >Add</button>
-
-
             </div>
         </div>
     </div>
@@ -118,7 +112,6 @@
                 }
             });
         
-
             // Event handler to trigger the AJAX call and show the modal
             $('#add-button').on('click', function() {
                 const targetUrl = '<?= base_url("KamarFasilitasController/create/" . $master->id) ?>' // Set the URL you want to call

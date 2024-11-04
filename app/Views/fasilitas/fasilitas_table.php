@@ -18,24 +18,32 @@
         <div class="row">
             <div class="col-md-12">
 
-                <?php if (!empty(session()->getFlashdata('type'))) : ?>
-
-                    <div class="alert alert-success">
-                        <?php echo session()->getFlashdata('type'); ?>
-                    </div>
-
+            <?php if(!empty(session()->getFlashdata('type'))) : ?>
+                <div class="alert alert-success">
+                    <?php echo session()->getFlashdata('type');?>
+                </div>                    
                 <?php endif ?>
+            
+                <div class="pagination-links" style="float: right; display: flex; align-items: center;">
+                    <div class = "center-container" style= "margin-right: 10px">
+                        <span>Page : &nbsp</span>
+                        <span>
+                            <?php if ($pager->getTotal() > 0): ?>
+                                <?= $pager->makeLinks($pager->getCurrentPage(), 6, $pager->getTotal(), 'default_full') ?>
+                            <?php else: ?>
+                                0
+                            <?php endif; ?>
+                        </span>                        
+                    </div>
+                </div>
 
-                <button id="add-button" class="btn btn-md btn-success mb-3">Add</button>
-
+            
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
                             <th style="width: 120px"></th>
                             <th style="width: 55%">Nama fasilitas</th>
-                            <th style="width: 30%">Deskripsi</th>
-                         
-
+                            <th style="width: 30%">Deskripsi</th>                        
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +77,7 @@
                     </tbody>
                 </table>
 
+                <button id="add-button" class="btn btn-md btn-success mb-3">Add</button>
             </div>
         </div>
     </div>

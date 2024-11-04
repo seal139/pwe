@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Controllers;
+<?php namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\FasilitasModel;
@@ -14,12 +12,10 @@ class FasilitasController extends BaseController
         $this->entity = new FasilitasModel();
     }
 
-    /**
-     * index function
-     */
     public function index()
     {
-        $data['entity'] = $this->entity->findAll();
+        $data['entity'] = $this->entity->paginate(6);    
+        $data['pager']  = $this->entity->pager;
 
         return view('fasilitas/fasilitas_table', $data);
     }
@@ -62,15 +58,15 @@ class FasilitasController extends BaseController
         $model = new FasilitasModel();
 
         $data = [
-            'id' => $id,
+            'id'             => $id,
             'nama_fasilitas' => $this->request->getPost('nama_fasilitas'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'deskripsi'      => $this->request->getPost('deskripsi'),
         ];
 
         if (!$model->save($data)) {
             return $this->response->setJSON([
                 'success' => false,
-                'errors' => $model->errors(), // Pass the validation errors
+                'errors'  => $model->errors(), // Pass the validation errors
             ]);
         }
 
@@ -87,14 +83,13 @@ class FasilitasController extends BaseController
 
         $data = [
             'nama_fasilitas' => $this->request->getPost('nama_fasilitas'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            #'gambar' => $this->request->getFile('gambar')->getName(), // Assuming file upload is handled
+            'deskripsi'      => $this->request->getPost('deskripsi'),
         ];
 
         if (!$model->save($data)) {
             return $this->response->setJSON([
                 'success' => false,
-                'errors' => $model->errors(), // Pass the validation errors
+                'errors'  => $model->errors(), // Pass the validation errors
             ]);
         }
 
