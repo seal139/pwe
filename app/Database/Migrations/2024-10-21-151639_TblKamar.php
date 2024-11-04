@@ -10,41 +10,32 @@ class TblKamar extends Migration
     {
         //
         $this->forge->addField([
-            'id'          => [
+            'id' => [
                 'type'           => 'INT',
                 'constraint'     => 6,
                 'unsigned'       => true,
                 'auto_increment' => true
             ],
-            'tipe_kamar'      => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 10,
+            'tipe_kamar' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
             ],
             'harga' => [
-                'type'           => 'DOUBLE',
-                'default'        => 0,
+                'type'    => 'DOUBLE',
+                'default' => 0,
             ],
-            'deskripsi'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '50'
+            'deskripsi' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 250
             ],
             'jumlah_kamar' => [
-                'type'           => 'DOUBLE',
-                'default'        => 0,
-            ],
-            'gambar' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true, // Allow NULL values for optional images
-            ],
+                'type'    => 'DOUBLE',
+                'default' => 0,
+            ],      
         ]);
-        // Membuat primary key	
 
         $this->forge->addKey('id', TRUE);
-
-        // Membuat tabel tblkamar
         $this->forge->createTable('tblkamar', TRUE);
-        
     }
 
     public function down()
