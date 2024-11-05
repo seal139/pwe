@@ -21,18 +21,23 @@ class BookingController extends BaseController
         $data['pager']  = $this->entity->pager;
         return view('booking/booking_table', $data);
     }
-
+    
     public function create()
     {
-        // Load tamu and kamar models to populate dropdown options
-        $tamuModel = new TamuModel();
-        $kamarModel = new KamarModel();
-
-        $data['tamu'] = $tamuModel->findAll();
-        $data['kamar'] = $kamarModel->findAll();
-
-        return view('booking_create', $data);
+        return view('booking/booking_create');
     }
+
+    // public function create()
+    // {
+    //     // Load tamu and kamar models to populate dropdown options
+    //     $tamuModel = new TamuModel();
+    //     $kamarModel = new KamarModel();
+
+    //     $data['nama'] = $tamuModel->findAll();
+    //     $data['tipe_kamar'] = $kamarModel->findAll();
+
+    //     return view('booking_create', $data);
+    // }
 
     public function store()
     {
