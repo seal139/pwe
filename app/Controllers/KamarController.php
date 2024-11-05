@@ -2,6 +2,8 @@
 
 use CodeIgniter\Controller;
 use App\Models\KamarModel;
+use App\Models\KamarFasilitasModel;
+use App\Models\FasilitasModel;
 
 class KamarController extends BaseController 
 {
@@ -11,7 +13,7 @@ class KamarController extends BaseController
     {
         $this->entity = new KamarModel();
     }
-
+    
     public function index()
     {
         $data['entity'] = $this->entity->paginate(6);    
@@ -23,6 +25,31 @@ class KamarController extends BaseController
     public function view($id)
     {
         $data['entity'] = $this->entity->find($id);
+        
+        $mapper = new KamarFasilitasModel();
+        $mapperData = $mapper->where('id_kamar', $id)->findAll();
+
+        $facilityEntity = new FasilitasModel();
+        $facilities     = $facilityEntity->findAll();
+
+        foreach ($facilities as $facility) {
+            $facilityName[$facility->id] = $facility->nama_fasilitas;
+        }
+        
+        $facilityNamesStr = ''; // Initialize an empty string to append facility names
+        foreach ($mapperData as $mapperItem) {
+            $id_fasilitas = $mapperItem->id_fasilitas;
+            if (isset($facilityName[$id_fasilitas])) {
+                $facilityNamesStr .= $facilityName[$id_fasilitas] . ', ';
+            }
+        }
+
+        // Trim the trailing comma and space from the string
+        $facilityNamesStr = rtrim($facilityNamesStr, ', ');
+        $data['facility'] = $facilityNamesStr;
+        
+
+
         return view('kamar/kamar_view', $data);
     }
 

@@ -64,11 +64,11 @@
                         // Handle success
                         $('#responseMessage').html('<div class="alert alert-success">' + data.message + '</div>');
                         setTimeout(function() {
-                            window.location.href = "<?= base_url('KamarController') ?>";
+                            window.location.href = "<?= base_url('KamarFasilitasController/detail/'. $master->id)  ?>";
                         }, 1000)                   
                     } else {
                         // Handle errors returned from the server
-                        let errorMessages = '<div class="alert alert-danger"><ul>';
+                        let errorMessages = '<div class="alert alert-danger"><ul>';  
                         $.each(data.errors, function(index, error) {
                             errorMessages += '<li>' + error + '</li>';
                         });

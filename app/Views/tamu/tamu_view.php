@@ -7,11 +7,6 @@
             <?= csrf_field(); ?>
 
             <div class="form-group">
-                <label for="id">ID</label>
-                <label class="form-control"><?= $entity->id; ?></label>
-            </div>
-
-            <div class="form-group">
                 <label for="nama">Nama</label>
                 <label class="form-control"><?= $entity->nama; ?></label>
             </div>

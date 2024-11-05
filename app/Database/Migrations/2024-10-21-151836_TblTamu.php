@@ -21,11 +21,11 @@ class TblTamu extends Migration
             ],
             'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50'
+                'constraint' => 50
             ],
             'no_telpon' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '13'
+                'constraint' => 13
             ],
         ]);
         // Membuat primary key	
