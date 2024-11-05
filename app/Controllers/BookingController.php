@@ -8,11 +8,18 @@ use App\Models\KamarModel;
 
 class BookingController extends BaseController
 {
+    protected $entity;
+ 
+    function __construct()
+    {
+        $this->entity = new BookingModel();
+    }
+
     public function index()
     {
-        $model = new BookingModel();
-        $data['bookings'] = $model->findAll();
-        return view('booking_list', $data);
+        $data['entity'] = $this->entity->paginate(6);    
+        $data['pager']  = $this->entity->pager;
+        return view('booking/booking_table', $data);
     }
 
     public function create()
@@ -24,7 +31,7 @@ class BookingController extends BaseController
         $data['tamu'] = $tamuModel->findAll();
         $data['kamar'] = $kamarModel->findAll();
 
-        return view('booking_form', $data);
+        return view('booking_create', $data);
     }
 
     public function store()
@@ -59,7 +66,7 @@ class BookingController extends BaseController
         $data['tamu'] = $tamuModel->findAll();
         $data['kamar'] = $kamarModel->findAll();
 
-        return view('booking_form', $data);
+        return view('booking_edit', $data);
     }
 
     public function update($id)
@@ -68,11 +75,11 @@ class BookingController extends BaseController
 
         $data = [
             'id' => $id,
-            'id_tamu' => $this->request->getPost('id_tamu'),
-            'id_kamar' => $this->request->getPost('id_kamar'),
-            'tanggal_checkin' => $this->request->getPost('tanggal_checkin'),
-            'tanggal_checkout' => $this->request->getPost('tanggal_checkout'),
-            'jumlah_kamar' => $this->request->getPost('jumlah_kamar'),
+            'id_tamu' => $this->request->getPost('idtamu'),
+            'id_kamar' => $this->request->getPost('idkamar'),
+            'tanggal_checkin' => $this->request->getPost('tanggalcheckin'),
+            'tanggal_checkout' => $this->request->getPost('tanggalcheckout'),
+            'jumlah_kamar' => $this->request->getPost('jumlahkamar'),
         ];
 
         if (!$model->save($data)) {

@@ -1,40 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Booking Details</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>   
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Booking Details</h3>
+        </div>
+        <div class="card-body">
+            <?= csrf_field(); ?>
 
-</head>
-<body>
-    <div class="container">   
+            <div class="form-group">
+                <label for="type">Guest ID</label>
+                <label class="form-control"><?= $entity->id_tamu; ?></label>
+            </div>
 
-        <h1>Booking Details</h1>
+            <div class="form-group">
+                <label for="price">Room ID</label>
+                <label class="form-control"><?= $entity->id_kamar; ?></label>
+            </div>
 
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Guest ID</th>
-                    <td><?= $booking['id_tamu'] ?></td>
-                </tr>
-                <tr>
-                    <th>Room ID</th>
-                    <td><?= $booking['id_kamar'] ?></td>
-                </tr>
-                <tr>
-                    <th>Check-in Date</th>
-                    <td><?= $booking['tanggal_checkin'] ?></td>
-                </tr>
-                <tr>
-                    <th>Check-out Date</th>
-                    <td><?= $booking['tanggal_checkout'] ?></td>
-                </tr>
-                <tr>
-                    <th>Number of Rooms</th>
-                    <td><?= $booking['jumlah_kamar'] ?></td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="form-group">
+                <label for="description">Check In</label>
+                <label class="form-control"><?= $entity->tanggal_checkin; ?></label>
+            </div>
+
+            <div class="form-group">
+                <label for="roomCount">Check Out</label>
+                <label class="form-control"><?= $entity->tanggal_checkout; ?></label>
+            </div>
+
+            <div class="form-group">
+                <label for="roomCount">Numbers Of Rooms</label>
+                <label class="form-control"><?= $entity->jumlah_kamar; ?></label>
+            </div>
+            
+            <a href="<?= base_url('BookingController/detail/' . $entity->id); ?>">
+                Edit Booking
+            </a>
+        </div>
     </div>
-</body>
-</html>
+</div>
