@@ -19,22 +19,22 @@
 
                 <div class="form-group">
                     <label for="type">Guest ID</label>                    
-                    <input type="text" class="form-control" id="idtamu" name="idtamu" value="<?= $entity->id_tamu; ?>"/>
+                    <label class="form-control"><?= $guest; ?></label>
                 </div>
 
                 <div class="form-group">
                     <label for="price">Room ID</label>
-                    <input type="text" class="form-control" id="idkamar" name="idkamar" value="<?= $entity->id_kamar; ?>"/>
+                    <label class="form-control"><?= $room; ?></label>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Check In</label>
-                    <input type="text" class="form-control" id="tanggalcheckin" name="tanggalcheckin" value="<?= $entity->tanggal_checkin; ?>" />
+                    <input type="date" class="form-control" id="tanggalcheckin" name="tanggalcheckin" value="<?= $entity->tanggal_checkin; ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="roomCount">Check Out</label>
-                    <input type="text" class="form-control" id="tanggalcheckout" name="tanggalcheckout" value="<?= $entity->tanggal_checkout; ?>" />
+                    <input type="date" class="form-control" id="tanggalcheckout" name="tanggalcheckout" value="<?= $entity->tanggal_checkout; ?>" />
                 </div>                  
 
                 <div class="form-group">

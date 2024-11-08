@@ -66,20 +66,21 @@ class BookingController extends BaseController
 
         return view('booking/booking_create', $data);
     }
-
+    
     public function edit($id)
     {
-        $model = new BookingModel();
-        $data['booking'] = $model->find($id);
+        $book = $this->entity->where('id', $id)->first();
+        $data['entity'] = $book;
 
-        // Load tamu and kamar models to populate dropdown options
-        $tamuModel = new TamuModel();
-        $kamarModel = new KamarModel();
+        $roomEntity    = new KamarModel();
+        $room          = $roomEntity->where('id', $book->id_kamar)->first();
+        $data['room']  = $room->tipe_kamar;
 
-        $data['tamu'] = $tamuModel->findAll();
-        $data['kamar'] = $kamarModel->findAll();
+        $guestEntity    = new TamuModel();
+        $guest          = $guestEntity->where('id', $book->id_tamu)->first();
+        $data['guest']  = $guest->nama;
 
-        return view('booking_edit', $data);
+        return view('booking/booking_edit', $data);
     }
 
     public function delete($id)
@@ -90,8 +91,6 @@ class BookingController extends BaseController
 
     public function saveOnCreate()
     {
-        $model = new BookingModel();
-
         $data = [
             'id_tamu' => $this->request->getPost('guest'),
             'id_kamar' => $this->request->getPost('room'),
@@ -100,11 +99,11 @@ class BookingController extends BaseController
             'jumlah_kamar' => $this->request->getPost('roomCount'),
         ];
 
-        if (!$model->save($data)) {
-            if($model->errors()){
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
                 return $this->response->setJSON([                
                     'success' => false,
-                    'errors' => $model->errors(), // Pass the validation errors
+                    'errors' => $this->entity->errors(), // Pass the validation errors
                 ]);
             }
         }
@@ -118,23 +117,31 @@ class BookingController extends BaseController
 
     public function saveOnEdit($id)
     {
-        $model = new BookingModel();
+        $book = $this->entity->where('id', $id)->first();
 
         $data = [
             'id' => $id,
-            'id_tamu' => $this->request->getPost('idtamu'),
-            'id_kamar' => $this->request->getPost('idkamar'),
+            'id_tamu' => $book->id_tamu,
+            'id_kamar' => $book->id_kamar,
             'tanggal_checkin' => $this->request->getPost('tanggalcheckin'),
             'tanggal_checkout' => $this->request->getPost('tanggalcheckout'),
             'jumlah_kamar' => $this->request->getPost('jumlahkamar'),
         ];
 
-        if (!($model->save($data))) {
-            // Handle errors, e.g., display error messages
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors' => $this->entity->errors(), // Pass the validation errors
+                ]);
+            }
         }
 
-        return redirect()->to('/booking')->with('success', 'Booking updated successfully.');
+        // Return success message as JSON
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Booking added successfully.',
+        ]);
     }
 
     

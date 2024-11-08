@@ -24,7 +24,7 @@
                         <option value="">Select Guest</option> <!-- Default option -->
                         <?php foreach ($guests as $guest): ?>
                             <option value="<?= $guest->id?>">
-                                <?= $guest->nama . "-" . $guest->no_telpon ?>
+                                <?= $guest->no_telpon . " - " . $guest->nama ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

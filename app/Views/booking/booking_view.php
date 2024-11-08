@@ -8,12 +8,12 @@
 
             <div class="form-group">
                 <label for="type">Guest</label>
-                <label class="form-control"><?= $room; ?></label>
+                <label class="form-control"><?= $guest; ?></label>
             </div>
 
             <div class="form-group">
                 <label for="price">Room</label>
-                <label class="form-control"><?= $guest; ?></label>
+                <label class="form-control"><?= $room; ?></label>
             </div>
 
             <div class="form-group">
