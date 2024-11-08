@@ -38,12 +38,10 @@
                     <thead class="thead-dark">
                         <tr>
                             <th style="width: 120px"></th>
-                            <th style="width: 20%">Guest</th>
-                            <th style="width: 15%">Room Type</th>
-                            <th style="width: 15%">Room Count</th>                            
+                            <th style="width: 45%">Guest</th>
+                            <th style="width: 25%">Room Type</th>            
                             <th style="width: 15%">Check In</th>                            
-                            <th style="width: 15%">Check Out</th>                            
-                            <th style="width: 15%">Numbers Of Rooms</th>                            
+                            <th style="width: 15%">Check Out</th>                           
                         </tr>
                     </thead>
                     <tbody>
@@ -65,20 +63,14 @@
                                 </td>
 
                                 <td>
-                                    <div class = "center-container">
-                                        <div class="fa-stack action-button">
-                                            <i class="fa fa-eye fa-stack-1x fa-inverse action-button-blue action-button">&nbsp</i>
-                                        </div>
-                                        <div class="fa-stack view-button" id="vw<?= $row->id ?>">
-                                            <?php echo $row->id_tamu ?>
-                                        </div>
+                                    <div class="stack-middle view-button" id="vw<?= $row->id ?>">
+                                        <?php echo $row->id_tamu ?>
                                     </div>
-                                    
                                 </td>
-                                <td><div class="fa-stack"><?php echo $row->id_kamar ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->tanggal_checkin ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->tanggal_checkout ?></div></td>
-                                <td><div class="fa-stack"><?php echo $row->jumlah_kamar ?></div></td>          
+                                <td><div class="stack-middle"><?php echo $row->id_kamar ?></div></td>
+                                <td><div class="stack-middle"><?php echo $row->tanggal_checkin ?></div></td>
+                                <td><div class="stack-middle"><?php echo $row->tanggal_checkout ?></div></td>
+                                        
                             </tr>
 
                         <?php endforeach ?>

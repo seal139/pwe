@@ -38,7 +38,7 @@
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th></th>
+                            <th style="width: 120px"></th>
                             <th style="width: 100%">Facility</th>                            
                         </tr>
                     </thead>
@@ -57,15 +57,9 @@
                                 </td>
 
                                 <td>
-                                    <div class = "center-container">
-                                        <div class="fa-stack action-button">
-                                            <i class="fa fa-eye fa-stack-1x fa-inverse action-button-blue action-button">&nbsp</i>
-                                        </div>
-                                        <div class="stack-middle view-button" id="vw<?= $row->id_kamar. "/" . $row->id_fasilitas ?>">
-                                            <?php echo $facilityName[$row->id_fasilitas] ?>
-                                        </div>
-                                    </div>
-                                    
+                                    <div class="stack-middle view-button" id="vw<?= $row->id_kamar. "/" . $row->id_fasilitas ?>">
+                                        <?php echo $facilityName[$row->id_fasilitas] ?>
+                                    </div>                                    
                                 </td>  
                             </tr>
 

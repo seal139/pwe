@@ -125,11 +125,7 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="www.mercubuana.ac.id">Fasilkom</a>
-            </li>
-
+        <ul class="navbar-nav mr-auto">        
             <li class="nav-item">
                 <a class="nav-link" href="/BookingController">Booking</a>
             </li>

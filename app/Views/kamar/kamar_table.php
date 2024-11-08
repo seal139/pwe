@@ -62,16 +62,9 @@
                                 </td>
 
                                 <td>
-                                    <div class = "center-container">
-                                        <div class="fa-stack action-button">
-                                            <i class="fa fa-eye fa-stack-1x fa-inverse action-button-blue action-button">&nbsp</i>
-                                        </div>
-                                        <div class="fa-stack view-button" id="vw<?= $row->id ?>">
-                                            <?php echo $row->tipe_kamar ?>
-                                        </div>
-                                    </div>
-                                    
+                                    <div class="stack-middle view-button" id="vw<?= $row->id ?>"><?php echo $row->tipe_kamar ?></div>
                                 </td>
+
                                 <td><div class="fa-stack"><?php echo $row->harga ?></div></td>
                                 <td><div class="fa-stack"><?php echo $row->jumlah_kamar ?></div></td>          
                             </tr>

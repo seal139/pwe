@@ -43,7 +43,7 @@
                         <tr>
                             <th style="width: 120px"></th>
                             <th style="width: 25%">Username</th>
-                            <th style="width: 70%">Full Name</th>                            
+                            <th style="width: 75%">Full Name</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -60,16 +60,10 @@
                                     </div>                                                          
                                 </td>
 
-                                <td>
-                                    <div class = "center-container">
-                                        <div class="fa-stack action-button">
-                                            <i class="fa fa-eye fa-stack-1x fa-inverse action-button-blue action-button">&nbsp</i>
-                                        </div>
-                                        <div class="stack-middle view-button" id="vw<?= $row->id ?>">
-                                            <?php echo $row->username ?>
-                                        </div>
+                                <td>                                    
+                                    <div class="stack-middle view-button" id="vw<?= $row->id ?>">
+                                        <?php echo $row->username ?>
                                     </div>
-                                    
                                 </td>
                                 <td><div class="stack-middle"><?php echo $row->nama?></div></td>
                             </tr>

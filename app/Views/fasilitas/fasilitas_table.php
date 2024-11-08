@@ -42,8 +42,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th style="width: 120px"></th>
-                            <th style="width: 55%">Nama fasilitas</th>
-                            <th style="width: 30%">Deskripsi</th>                        
+                            <th style="width: 30%">Nama fasilitas</th>
+                            <th style="width: 70%">Deskripsi</th>                        
                         </tr>
                     </thead>
                     <tbody>
