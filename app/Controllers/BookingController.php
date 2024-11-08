@@ -39,6 +39,22 @@ class BookingController extends BaseController
 
         return view('booking/booking_table', $data);
     }
+
+    public function view($id)
+    {
+        $book = $this->entity->where('id', $id)->first();
+        $data['entity'] = $book;
+
+        $roomEntity    = new KamarModel();
+        $room          = $roomEntity->where('id', $book->id_kamar)->first();
+        $data['room']  = $room->tipe_kamar;
+
+        $guestEntity    = new TamuModel();
+        $guest          = $guestEntity->where('id', $book->id_tamu)->first();
+        $data['guest']  = $guest->nama;
+        
+        return view('booking/booking_view', $data);
+    }
     
     public function create()
     {

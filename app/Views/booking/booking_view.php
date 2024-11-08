@@ -7,13 +7,13 @@
             <?= csrf_field(); ?>
 
             <div class="form-group">
-                <label for="type">Guest ID</label>
-                <label class="form-control"><?= $entity->id_tamu; ?></label>
+                <label for="type">Guest</label>
+                <label class="form-control"><?= $room; ?></label>
             </div>
 
             <div class="form-group">
-                <label for="price">Room ID</label>
-                <label class="form-control"><?= $entity->id_kamar; ?></label>
+                <label for="price">Room</label>
+                <label class="form-control"><?= $guest; ?></label>
             </div>
 
             <div class="form-group">
@@ -30,10 +30,6 @@
                 <label for="roomCount">Numbers Of Rooms</label>
                 <label class="form-control"><?= $entity->jumlah_kamar; ?></label>
             </div>
-            
-            <a href="<?= base_url('BookingController/detail/' . $entity->id); ?>">
-                Edit Booking
-            </a>
         </div>
     </div>
 </div>
