@@ -28,7 +28,7 @@ class SessionInterceptor implements FilterInterface
         // if not logged in, force to login
         if(is_null(session()->get('logged_in'))) {
             if($controllerName != "LoginController") {
-                //return redirect()->to(base_url('/LoginController'));
+                return redirect()->to(base_url('/LoginController'));
             }            
         }
 
@@ -37,9 +37,13 @@ class SessionInterceptor implements FilterInterface
             if($controllerName == "LoginController") {
                 // got to know if user access logout. this should not be a blocker
                 if (!(isset($uri[1]) && $uri[1] == "logout")) {
-                   //return redirect()->to(base_url('/HomeController'));
+                   return redirect()->to(base_url('/HomeController'));
                 }
-            }  
+            }
+
+            else if($controllerName == "UserController" && session()->get('role') == 0) {
+                return redirect()->to(base_url('/HomeController/on401'));
+            }
         }      
     }
 

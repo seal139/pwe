@@ -13,4 +13,9 @@ class HomeController extends BaseController
     {
         return view('error');
     }
+
+    public function on401(): string 
+    {
+        return view('denied');
+    }
 }
