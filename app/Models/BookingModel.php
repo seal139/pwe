@@ -8,6 +8,7 @@ class BookingModel extends Model
 {
     protected $table = 'tblbooking';
     protected $primaryKey = 'id';
+    protected $returnType       = 'object';
 
     protected $allowedFields = [
         'id_tamu',
@@ -19,19 +20,35 @@ class BookingModel extends Model
 
     // Validation rules can be added here
     protected $validationRules = [
-        'id_tamu' => 'required|integer',
-        'id_kamar' => 'required|integer',
-        'tanggal_checkin' => 'required|valid_date',
-        'tanggal_checkout' => 'required|valid_date|greater_than[tanggal_checkin]',
-        'jumlah_kamar' => 'required|integer|greater_than[0]',
+        'id_tamu'           => 'required|integer',
+        'id_kamar'          => 'required|integer',
+        'tanggal_checkin'   => 'required|valid_date[Y-m-d]', // Expecting Y-m-d format for date
+        'tanggal_checkout'  => 'required|valid_date[Y-m-d]', // Checkout must be after checkin date
+        'jumlah_kamar'      => 'required|integer|greater_than[0]',
     ];
 
     // Validation messages can be added here
     protected $validationMessages = [
-        'id_tamu' => 'Tamu is required.',
-        'id_kamar' => 'Kamar is required.',
-        'tanggal_checkin' => 'Check-in date is required and must be a valid date.',
-        'tanggal_checkout' => 'Check-out date is required, must be a valid date, and must be after the check-in date.',
-        'jumlah_kamar' => 'Jumlah kamar is required and must be a positive integer.',
+        'id_tamu' => [
+        'required' => 'Tamu is required.',
+        'integer'  => 'Tamu must be a number.',
+    ],
+    'id_kamar' => [
+        'required' => 'Kamar is required.',
+        'integer'  => 'Kamar must be a number.',
+    ],
+    'tanggal_checkin' => [
+        'required'  => 'Check-in date is required.',
+        'valid_date'=> 'Check-in date must be a valid date in the format Y-m-d.',
+    ],
+    'tanggal_checkout' => [
+        'required'     => 'Check-out date is required.',
+        'valid_date'   => 'Check-out date must be a valid date in the format Y-m-d.',
+    ],
+    'jumlah_kamar' => [
+        'required'     => 'Jumlah kamar is required.',
+        'integer'      => 'Jumlah kamar must be an integer.',
+        'greater_than' => 'Jumlah kamar must be a number > 0.',
+    ],
     ];
 }

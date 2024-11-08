@@ -24,7 +24,13 @@ class BookingController extends BaseController
     
     public function create()
     {
-        return view('booking/booking_create');
+        $kamarEntity  = new KamarModel();
+        $data['rooms'] = $kamarEntity->findAll();
+        
+        $guestEntity   = new TamuModel();
+        $data['guests'] = $guestEntity->findAll();
+
+        return view('booking/booking_create', $data);
     }
 
     // public function create()
@@ -39,19 +45,42 @@ class BookingController extends BaseController
     //     return view('booking_create', $data);
     // }
 
-    public function store()
+    public function saveOnCreate()
     {
+        log_message('error', 'Suck:' . $this->request->getPost('guest'));
+        log_message('error', 'Suck:' . $this->request->getPost('room'));
+        log_message('error', 'Suck:' . $this->request->getPost('checkin'));
+        log_message('error', 'Suck:' . $this->request->getPost('checkout'));
+        log_message('error', 'Suck:' . $this->request->getPost('roomCount'));
+
+        log_message('error', 'Check-in date: ' . $this->request->getPost('checkin'));
+        log_message('error', 'Check-out date: ' .  $this->request->getPost('checkout'));
+
+        // Compare their Unix timestamps to debug
+        log_message('error', 'Check-in timestamp: ' . strtotime($this->request->getPost('checkin')));
+        log_message('error', 'Check-out timestamp: ' . strtotime( $this->request->getPost('checkout')));
+
+
         $model = new BookingModel();
 
         $data = [
-            'id_tamu' => $this->request->getPost('id_tamu'),
-            'id_kamar' => $this->request->getPost('id_kamar'),
-            'tanggal_checkin' => $this->request->getPost('tanggal_checkin'),
-            'tanggal_checkout' => $this->request->getPost('tanggal_checkout'),
-            'jumlah_kamar' => $this->request->getPost('jumlah_kamar'),
+            'id_tamu' => $this->request->getPost('guest'),
+            'id_kamar' => $this->request->getPost('room'),
+            'tanggal_checkin' => $this->request->getPost('checkin'),
+            'tanggal_checkout' => $this->request->getPost('checkout'),
+            'jumlah_kamar' => $this->request->getPost('roomCount'),
         ];
 
         if (!$model->save($data)) {
+            $validation = \Config\Services::validation();
+            $errors = $validation->getErrors();
+
+            // Log each error message
+            foreach ($errors as $field => $error) {
+                log_message('error', "Validation Error on $field: $error");
+            }
+            
+            log_message('error', 'eerr:' . print_r($model->errors(), true));
             // Handle errors, e.g., display error messages
             return redirect()->back()->withInput()->with('errors', $model->errors());
         }
@@ -87,7 +116,7 @@ class BookingController extends BaseController
             'jumlah_kamar' => $this->request->getPost('jumlahkamar'),
         ];
 
-        if (!$model->save($data)) {
+        if (!($model->save($data))) {
             // Handle errors, e.g., display error messages
             return redirect()->back()->withInput()->with('errors', $model->errors());
         }

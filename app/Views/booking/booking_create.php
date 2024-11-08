@@ -18,28 +18,44 @@
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
-                    <label for="idtamu">Guest ID</label>
-                    <input type="text" class="form-control" id="idtamu" name="idtamu">
+                    <label for="idtamu">Guest</label>
+
+                    <select name="guest" id="guest" class="form-control">
+                        <option value="">Select Guest</option> <!-- Default option -->
+                        <?php foreach ($guests as $guest): ?>
+                            <option value="<?= $guest->id?>">
+                                <?= $guest->nama . "-" . $guest->no_telpon ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="idkamar">Room ID</label>
-                    <input type="text" class="form-control" id="idkamar" name="idkamar">
+                    <label for="idkamar">Room</label>
+
+                    <select name="room" id="room" class="form-control">
+                        <option value="">Select Room</option> <!-- Default option -->
+                        <?php foreach ($rooms as $room): ?>
+                            <option value="<?= $room->id?>">
+                                <?= $room->tipe_kamar ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="tanggalcheckin">Check In</label>
-                    <input type="text" class="form-control" id="tanggalcheckin" name="tanggalcheckin" />
+                    <label for="checkin">Check In</label>
+                    <input type="date" class="form-control" id="checkin" name="checkin" />
                 </div>
 
                 <div class="form-group">
-                    <label for="tanggalcheckout">Check Out</label>
-                    <input type="text" class="form-control" id="tanggalcheckout" name="tanggalcheckout" />
+                    <label for="checkout">Check Out</label>
+                    <input type="date" class="form-control" id="checkout" name="checkout" />
                 </div>
 
                 <div class="form-group">
-                    <label for="jumlahkamar">Numbers Of Rooms</label>
-                    <input type="text" class="form-control" id="jumlahkamar" name="jumlahkamar" />
+                    <label for="roomCount">Numbers Of Rooms</label>
+                    <input type="text" class="form-control" id="roomCount" name="roomCount" />
                 </div>
                 
 
@@ -63,7 +79,7 @@
             const formData = $(this).serialize();
 
             $.ajax({
-                url: '<?= base_url('BookingController/create') ?>', // Adjust the URL as necessary
+                url: '<?= base_url('BookingController/saveOnCreate') ?>', // Adjust the URL as necessary
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
