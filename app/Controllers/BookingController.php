@@ -84,9 +84,8 @@ class BookingController extends BaseController
 
     public function delete($id)
     {
-        $model = new BookingModel();
-        $model->delete($id);
-        return redirect()->to('/booking')->with('success', 'Booking deleted successfully.');
+        $this->entity->delete($id);      
+        return redirect()->back()->with('success', 'Deleted!');
     }
 
     public function saveOnCreate()
