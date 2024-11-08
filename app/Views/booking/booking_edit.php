@@ -18,12 +18,12 @@
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
-                    <label for="type">Guest ID</label>                    
+                    <label for="type">Guest</label>                    
                     <label class="form-control"><?= $guest; ?></label>
                 </div>
 
                 <div class="form-group">
-                    <label for="price">Room ID</label>
+                    <label for="price">Room Type</label>
                     <label class="form-control"><?= $room; ?></label>
                 </div>
 

@@ -31,10 +31,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="idkamar">Room</label>
+                    <label for="idkamar">Room Type</label>
 
                     <select name="room" id="room" class="form-control">
-                        <option value="">Select Room</option> <!-- Default option -->
+                        <option value="">Select Room Type</option> <!-- Default option -->
                         <?php foreach ($rooms as $room): ?>
                             <option value="<?= $room->id?>">
                                 <?= $room->tipe_kamar ?>

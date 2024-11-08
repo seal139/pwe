@@ -21,28 +21,26 @@ class KamarModel extends Model
     // Validation rules can be added here
     protected $validationRules = [
         'tipe_kamar' => [
-            'label' => 'Room Type', // Custom label for the validation message
+            'label' => 'Room Type',
             'rules' => 'required|min_length[3]|max_length[10]',
         ],
 
         'harga' => [
-            'label' => 'Price', // Custom label for the validation message
+            'label' => 'Price',
             'rules' => 'required|numeric',
         ],
 
         'deskripsi' => [
-            'label' => 'Description', // Custom label for the validation message
+            'label' => 'Description',
             'rules' => 'required|max_length[50]',
         ],
 
         'jumlah_kamar' => [
-            'label' => 'Room Count', // Custom label for the validation message
+            'label' => 'Room Count',
             'rules' => 'required|integer|greater_than[0]',
         ],
-        #'gambar' => 'max_size[gambar,1024]|ext_in[gambar,jpg,png,jpeg]' // Assuming file upload is handled
     ];
-
-    // Validation messages can be added here
+    
     protected $validationMessages = [
         'tipe_kamar' => 'Tipe kamar is required and must be between 3 and 10 characters.',
         'harga' => 'Harga is required and must be a number.',

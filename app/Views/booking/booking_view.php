@@ -12,7 +12,7 @@
             </div>
 
             <div class="form-group">
-                <label for="price">Room</label>
+                <label for="price">Room Type</label>
                 <label class="form-control"><?= $room; ?></label>
             </div>
 
