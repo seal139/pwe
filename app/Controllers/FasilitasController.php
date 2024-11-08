@@ -33,64 +33,52 @@ class FasilitasController extends BaseController
 
     public function edit($id)
     {
-        //$tblproduk = new TblprodukModel();
         $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-
         return view('fasilitas/fasilitas_edit', $data);
     }
 
     public function delete($id)
     {
-        $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-
         $this->entity->delete($id);
         return redirect()->back()->with('success', 'Deleted!');
     }
 
     public function saveOnEdit($id)
     {
-        $model = new FasilitasModel();
-
         $data = [
             'id'             => $id,
             'nama_fasilitas' => $this->request->getPost('nama_fasilitas'),
             'deskripsi'      => $this->request->getPost('deskripsi'),
         ];
 
-        if (!$model->save($data)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'errors'  => $model->errors(), // Pass the validation errors
-            ]);
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors'  => $this->entity->errors(),
+                ]);
+            }
         }
 
         // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
-            'message' => 'Room updated successfully.',
+            'message' => 'Facility updated successfully!',
         ]);
     }
 
     public function saveOnCreate()
     {
-        $model = new fasilitasModel();
-
         $data = [
             'nama_fasilitas' => $this->request->getPost('nama_fasilitas'),
             'deskripsi'      => $this->request->getPost('deskripsi'),
         ];
 
-        if (!$model->save($data)) {
-            if($model->errors()){
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
                 return $this->response->setJSON([                
                     'success' => false,
-                    'errors' => $model->errors(), // Pass the validation errors
+                    'errors'  => $this->entity->errors(),
                 ]);
             }    
         }
@@ -98,7 +86,7 @@ class FasilitasController extends BaseController
         // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
-            'message' => 'Tamu added successfully.',
+            'message' => 'Facility added successfully!',
         ]);
     }
 }

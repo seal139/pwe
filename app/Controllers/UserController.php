@@ -22,11 +22,6 @@ class UserController extends BaseController
 
     public function delete($id)
     {
-        $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-        
         $this->entity->delete($id);      
         return redirect()->back()->with('success', 'Deleted!');
     }
@@ -44,8 +39,6 @@ class UserController extends BaseController
 
     public function saveOnCreate()
     {
-        $model = new UserModel();
-
         $data = [            
             'username' => $this->request->getPost('username'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
@@ -53,16 +46,15 @@ class UserController extends BaseController
             'role'     => 0,
         ];
     
-        if (!$model->save($data)) {
-            if($model->errors()){
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
                 return $this->response->setJSON([                
                     'success' => false,
-                    'errors' => $model->errors(), // Pass the validation errors
+                    'errors' => $this->entity->errors(),
                 ]);
             }    
         }
 
-        // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
             'message' => 'User added successfully.',

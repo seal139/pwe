@@ -35,12 +35,12 @@ class LoginController extends BaseController
                 return redirect()->to(base_url('HomeController'));
             } 
             else {
-                session()->setFlashdata('error', 'Username & Password Salah');
+                session()->setFlashdata('error', 'Username or password is incorrect');
                 return redirect()->back();
             }
         }
         else {
-            session()->setFlashdata('error', 'Username & Password Tidak Ada');
+            session()->setFlashdata('error', 'Account not found');
             return redirect()->back();
         }
     }

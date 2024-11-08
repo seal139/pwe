@@ -34,20 +34,11 @@ class TamuController extends BaseController
     public function edit($id)
     {
         $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-
         return view('tamu/tamu_edit', $data);
     }
 
     public function delete($id)
-    {
-        $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-        
+    {        
         $this->entity->delete($id);      
         return redirect()->back()->with('success', 'Deleted!');
         
@@ -55,8 +46,6 @@ class TamuController extends BaseController
 
     public function saveOnEdit($id)
     {       
-        $model = new TamuModel();
-
         $data = [
             'id'        => $id,
             'nama'      => $this->request->getPost('nama'),
@@ -64,16 +53,18 @@ class TamuController extends BaseController
             'no_telpon' => $this->request->getPost('notelepon'),
         ];
 
-        if (!$model->save($data)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'errors'  => $model->errors(), // Pass the validation errors
-            ]);
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors' => $this->entity->errors(),
+                ]);
+            }
         }
 
         return $this->response->setJSON([
             'success' => true,
-            'message' => 'Room updated successfully.',
+            'message' => 'Guest updated successfully.',
         ]);       
     }
 
@@ -88,19 +79,18 @@ class TamuController extends BaseController
             'no_telpon' => $this->request->getPost('notelepon'),
         ];
 
-        if (!$model->save($data)) {
-            if($model->errors()){
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
                 return $this->response->setJSON([                
                     'success' => false,
-                    'errors' => $model->errors(), // Pass the validation errors
+                    'errors'  => $this->entity->errors(),
                 ]);
-            }    
+            } 
         }
 
-        // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
-            'message' => 'Tamu added successfully.',
+            'message' => 'Guest added successfully.',
         ]);       
     }
    

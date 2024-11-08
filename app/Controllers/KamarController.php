@@ -24,19 +24,17 @@ class KamarController extends BaseController
 
     public function view($id)
     {
-        $data['entity'] = $this->entity->find($id);
-        
-        $mapper = new KamarFasilitasModel();
-        $mapperData = $mapper->where('id_kamar', $id)->findAll();
-
+        $mapper         = new KamarFasilitasModel();
         $facilityEntity = new FasilitasModel();
-        $facilities     = $facilityEntity->findAll();
+        
+        $mapperData = $mapper->where('id_kamar', $id)->findAll();
+        $facilities = $facilityEntity->findAll();
 
         foreach ($facilities as $facility) {
             $facilityName[$facility->id] = $facility->nama_fasilitas;
         }
         
-        $facilityNamesStr = ''; // Initialize an empty string to append facility names
+        $facilityNamesStr = '';
         foreach ($mapperData as $mapperItem) {
             $id_fasilitas = $mapperItem->id_fasilitas;
             if (isset($facilityName[$id_fasilitas])) {
@@ -44,9 +42,9 @@ class KamarController extends BaseController
             }
         }
 
-        // Trim the trailing comma and space from the string
         $facilityNamesStr = rtrim($facilityNamesStr, ', ');
         $data['facility'] = $facilityNamesStr;
+        $data['entity']   = $this->entity->find($id);
 
         return view('kamar/kamar_view', $data);
     }
@@ -58,31 +56,18 @@ class KamarController extends BaseController
 
     public function edit($id)
     {
-        //$tblproduk = new TblprodukModel();
         $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-
         return view('kamar/kamar_edit', $data);
     }
 
     public function delete($id)
-    {
-        $data['entity'] = $this->entity->find($id);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-        
+    {        
         $this->entity->delete($id);      
-        return redirect()->back()->with('success', 'Deleted!');
-        
+        return redirect()->back()->with('success', 'Deleted!');   
     }
 
     public function saveOnEdit($id)
     {       
-        $model = new KamarModel();
-
         $data = [
             'id'           => $id,
             'tipe_kamar'   => $this->request->getPost('type'),
@@ -91,14 +76,15 @@ class KamarController extends BaseController
             'jumlah_kamar' => $this->request->getPost('roomCount'),
         ];
 
-        if (!$model->save($data)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'errors'  => $model->errors(), // Pass the validation errors
-            ]);
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors' => $this->entity->errors(),
+                ]);
+            }
         }
 
-        // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
             'message' => 'Room updated successfully.',
@@ -107,8 +93,6 @@ class KamarController extends BaseController
 
     public function saveOnCreate()
     {
-        $model = new KamarModel();
-
         $data = [
             'tipe_kamar'   => $this->request->getPost('type'),
             'harga'        => $this->request->getPost('price'),
@@ -116,11 +100,11 @@ class KamarController extends BaseController
             'jumlah_kamar' => $this->request->getPost('roomCount'),
         ];
 
-        if (!$model->save($data)) {
-            if($model->errors()){
+        if (!$this->entity->save($data)) {
+            if($this->entity->errors()){
                 return $this->response->setJSON([                
                     'success' => false,
-                    'errors' => $model->errors(), // Pass the validation errors
+                    'errors' => $this->entity->errors(),
                 ]);
             }    
         }

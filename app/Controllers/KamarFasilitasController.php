@@ -16,20 +16,18 @@ class KamarFasilitasController extends BaseController
 
     public function detail($master)
     {
-        $data['entity'] = $this->entity->where('id_kamar', $master)->paginate(6);
-        $data['pager']  = $this->entity->pager;
-
         $masterEntity   = new KamarModel();
-        $data['master'] = $masterEntity->find($master);
-
         $facilityEntity = new FasilitasModel();
-        $facilities     = $facilityEntity->findAll();
 
+        $facilities = $facilityEntity->findAll();
         foreach ($facilities as $facility) {
             $facilityName[$facility->id] = $facility->nama_fasilitas;
             $facilityDesc[$facility->id] = $facility->deskripsi;
         }
         
+        $data['entity']       = $this->entity->where('id_kamar', $master)->paginate(6);
+        $data['pager']        = $this->entity->pager;
+        $data['master']       = $masterEntity->find($master);
         $data['facilityName'] = $facilityName;
         $data['facilityDesc'] = $facilityDesc;
 
@@ -52,47 +50,39 @@ class KamarFasilitasController extends BaseController
     public function create($master)
     {
         $masterEntity   = new KamarModel();
-        $data['master'] = $masterEntity->find($master);
+        $facilityEntity = new FasilitasModel();
 
-        $facilityEntity     = new FasilitasModel();
+        $data['master']     = $masterEntity->find($master);       
         $data['facilities'] = $facilityEntity->findAll();
         
         return view('kamarFasilitas/kamarFasilitas_create', $data);
     }
 
     public function delete($id1, $id2)
-    {
-        $data['entity'] = $this->entity->where('id_kamar', $id1)->where('id_fasilitas', $id2);
-        if (empty($data)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No data found!');
-        }
-        
+    {        
         $this->entity->where('id_kamar', $id1)->where('id_fasilitas', $id2)->delete();      
         return redirect()->back()->with('success', 'Deleted!');
     }
 
     public function saveOnCreate()
     {
-        $model = new KamarFasilitasModel();
-
         $data = [
             'id_kamar'     => $this->request->getPost('master'),
             'id_fasilitas' => $this->request->getPost('facility'),
         ];     
 
-        if (!$model->insert($data)) {
-            if($model->errors()){
+        if (!$this->entity->insert($data)) {
+            if($this->entity->errors()){
                 return $this->response->setJSON([                
                     'success' => false,
-                    'errors' => $model->errors(), // Pass the validation errors
+                    'errors' => $this->entity->errors(),
                 ]);
-            }            
+            }           
         }
 
-        // Return success message as JSON
         return $this->response->setJSON([
             'success' => true,
-            'message' => 'Room added successfully.',
+            'message' => 'Room Facility added successfully.',
         ]);       
     }
    
