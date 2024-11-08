@@ -47,8 +47,6 @@ class KamarController extends BaseController
         // Trim the trailing comma and space from the string
         $facilityNamesStr = rtrim($facilityNamesStr, ', ');
         $data['facility'] = $facilityNamesStr;
-        
-
 
         return view('kamar/kamar_view', $data);
     }
@@ -119,10 +117,12 @@ class KamarController extends BaseController
         ];
 
         if (!$model->save($data)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'errors'  => $model->errors(), // Pass the validation errors
-            ]);
+            if($model->errors()){
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors' => $model->errors(), // Pass the validation errors
+                ]);
+            }    
         }
 
         // Return success message as JSON

@@ -64,10 +64,10 @@
 
                                 <td>
                                     <div class="stack-middle view-button" id="vw<?= $row->id ?>">
-                                        <?php echo $row->id_tamu ?>
+                                        <?php echo $guest[$row->id_tamu] ?>
                                     </div>
                                 </td>
-                                <td><div class="stack-middle"><?php echo $row->id_kamar ?></div></td>
+                                <td><div class="stack-middle"><?php echo $room[$row->id_kamar] ?></div></td>
                                 <td><div class="stack-middle"><?php echo $row->tanggal_checkin ?></div></td>
                                 <td><div class="stack-middle"><?php echo $row->tanggal_checkout ?></div></td>
                                         

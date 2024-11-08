@@ -87,10 +87,12 @@ class FasilitasController extends BaseController
         ];
 
         if (!$model->save($data)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'errors'  => $model->errors(), // Pass the validation errors
-            ]);
+            if($model->errors()){
+                return $this->response->setJSON([                
+                    'success' => false,
+                    'errors' => $model->errors(), // Pass the validation errors
+                ]);
+            }    
         }
 
         // Return success message as JSON
