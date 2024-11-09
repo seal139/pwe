@@ -18,12 +18,12 @@
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
-                    <label for="nama_fasilitas">Nama Fasilitas</label>
+                    <label for="nama_fasilitas">Facility</label>
                     <input type="text" class="form-control" id="nama_fasilitas" name="nama_fasilitas">
                 </div>
 
                 <div class="form-group">
-                    <label for="deskripsi">Deskripsi</label>
+                    <label for="deskripsi">Description</label>
                     <input type="text" class="form-control" id="deskripsi" name="deskripsi">
                 </div>
 

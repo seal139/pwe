@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Ubah Tamu</h3>
+            <h3>Edit Guest</h3>
         </div>
         <div class="card-body">
             <?php if (!empty(session()->getFlashdata('error'))) : ?>
@@ -18,7 +18,7 @@
                 <?= csrf_field(); ?>
 
                 <div class="form-group">
-                    <label for="nama">Nama</label>
+                    <label for="nama">Name</label>
                     <input type="text" class="form-control" id="nama" name="nama" value="<?= $entity->nama; ?>"/>
                 </div>
 
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="notelepon">No Telepon</label>
+                    <label for="notelepon">Telp</label>
                     <input type="text" class="form-control" id="notelepon" name="notelepon" value="<?= $entity->no_telpon; ?>" />
                 </div>                  
 

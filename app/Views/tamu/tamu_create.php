@@ -20,7 +20,7 @@
 
 
                 <div class="form-group">
-                    <label for="nama">Nama</label>
+                    <label for="nama">Name</label>
                     <input type="text" class="form-control" id="nama" name="nama">
                 </div>
 
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="notelepon">No Telepon</label>
+                    <label for="notelepon">Telp</label>
                     <input type="text" class="form-control" id="notelepon" name="notelepon" />
                 </div>
                 
