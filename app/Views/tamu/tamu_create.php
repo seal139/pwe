@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Tambah Baru Tamu</h3>
+            <h3>Add New Guest</h3>
         </div>
         <div class="card-body">
             <?php if (!empty(session()->getFlashdata('error'))) : ?>

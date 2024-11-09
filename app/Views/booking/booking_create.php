@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Booking List</h3>
+            <h3>Book New</h3>
         </div>
         <div class="card-body">
             <?php if (!empty(session()->getFlashdata('error'))) : ?>
