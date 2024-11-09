@@ -26,17 +26,22 @@ class BookingController extends BaseController
         $rooms       = $kamarEntity->findAll();
         $guests      = $guestEntity->findAll();
 
-        foreach ($rooms as $room) {
-            $roomName[$room->id] = $room->tipe_kamar;
+        if($rooms){
+            foreach ($rooms as $room) {
+                $roomName[$room->id] = $room->tipe_kamar;
+            }
+            
+            $data['room']  = $roomName;            
         }
 
-        foreach ($guests as $guest) {
-            $guestName[$guest->id] = $guest->nama;
+        if($guests){
+            foreach ($guests as $guest) {
+                $guestName[$guest->id] = $guest->nama;
+            }
+
+            $data['guest'] = $guestName;
         }
         
-        $data['room']  = $roomName;
-        $data['guest'] = $guestName;
-
         return view('booking/booking_table', $data);
     }
 
