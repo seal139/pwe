@@ -23,6 +23,9 @@
                     <?php echo session()->getFlashdata('type');?>
                 </div>                    
                 <?php endif ?>
+
+                <h2>Facility</h2>
+                <br/>
             
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">
                     <div class = "center-container" style= "margin-right: 10px">
@@ -42,8 +45,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th style="width: 120px"></th>
-                            <th style="width: 30%">Nama fasilitas</th>
-                            <th style="width: 70%">Deskripsi</th>                        
+                            <th style="width: 30%">Facility</th>
+                            <th style="width: 70%">Description</th>                        
                         </tr>
                     </thead>
                     <tbody>

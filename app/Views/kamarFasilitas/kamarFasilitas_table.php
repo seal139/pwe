@@ -21,6 +21,9 @@
                         <?php echo session()->getFlashdata('type');?>
                     </div>                    
                 <?php endif ?>
+
+                <h2>Room Facility</h2>
+                <br/>
             
                 <a class="nav-link" href="/KamarController" style = "float:left">Room > <?= $master->tipe_kamar ?></a> 
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">

@@ -17,12 +17,13 @@
             <div class="col-md-12">
 
                 <?php if(!empty(session()->getFlashdata('type'))) : ?>
-
-                <div class="alert alert-success">
-                    <?php echo session()->getFlashdata('type');?>
-                </div>
-                    
+                    <div class="alert alert-success">
+                        <?php echo session()->getFlashdata('type');?>
+                    </div>                    
                 <?php endif ?>
+                
+                <h2>User</h2>
+                <br/>
             
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">
                     <div class = "center-container" style= "margin-right: 10px">

@@ -22,6 +22,9 @@
                 </div>                    
                 <?php endif ?>
             
+                <h2>Room</h2>
+                <br/>
+
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">
                     <div class = "center-container" style= "margin-right: 10px">
                         <span>Page : &nbsp</span>

@@ -21,6 +21,9 @@
                         <?php echo session()->getFlashdata('type');?>
                     </div>                    
                 <?php endif ?>
+
+                <h2>Guest</h2>
+                <br/>
             
                 <div class="pagination-links" style="float: right; display: flex; align-items: center;">
                     <div class = "center-container" style= "margin-right: 10px">
@@ -39,9 +42,9 @@
                     <thead class="thead-dark">
                         <tr>
                             <th style="width: 120px"></th>
-                            <th style="width: 55%">Nama</th>
+                            <th style="width: 55%">Name</th>
                             <th style="width: 30%">E-mail</th>
-                            <th style="width: 15%">No Telepon</th>
+                            <th style="width: 15%">Telp</th>
                             
                         </tr>
                     </thead>
