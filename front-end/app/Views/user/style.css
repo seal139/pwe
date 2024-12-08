@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+:root {
+        --main-color: #DD2F6E;
+        --color-dark: #1d2231;
+        --text-grey: #8390A2;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    width: 345px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--main-color);
+}
+
+.form-btn {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.filter-button {
+    width: 100%;
+    background-color: yellow;
+}
+body {
+    background-image: linear-gradient(#000000);
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background-position: center;
+    background-size: cover;
+}
+.custom-bg{
+    background-color: yellow;
+    border: 1px solid yellow;
+}
+.custom-bg:hover{
+    background-color: #279e8c;
+    border-color: #2ec1ac;
+}        
+
+.card-body {
+    flex-direction: row; /* Make the card-body items display horizontally */
+}
+
+.card-img-container {
+    flex: 0 0 200px; /* Set a fixed width for the image container */
+    margin-right: 20px;
+}
+
+.card-img-top {
+    width: 100%; /* Make the image fit the container */
+    height: auto;
+}
+
+.card-img {
+    height: 50%;
+    width: 50%;
+}
