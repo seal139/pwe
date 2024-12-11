@@ -1,0 +1,208 @@
+ERROR - 2024-11-05 15:53:42 --> mysqli_sql_exception: Can't create table `hotel_mercubuana2`.`kamar_fasilitas` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `k...', 0)
+#1 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `k...')
+#2 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `k...')
+#3 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `k...')
+#4 C:\xampp\htdocs\tb1\booking_hotel\app\Database\Migrations\2024-11-05-154729_CreateKamarFasilitasTable.php(20): CodeIgniter\Database\Forge->createTable('kamar_fasilitas')
+#5 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateKamarFasilitasTable->up()
+#6 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\tb1\booking_hotel\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-05 15:56:09 --> mysqli_sql_exception: Can't create table `hotel_mercubuana2`.`kamar_fasilitas` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `k...', 0)
+#1 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `k...')
+#2 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `k...')
+#3 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `k...')
+#4 C:\xampp\htdocs\tb1\booking_hotel\app\Database\Migrations\2024-11-05-154729_CreateKamarFasilitasTable.php(20): CodeIgniter\Database\Forge->createTable('kamar_fasilitas')
+#5 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateKamarFasilitasTable->up()
+#6 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\tb1\booking_hotel\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-05 15:57:24 --> mysqli_sql_exception: Can't create table `mercubuana2`.`kamar_fasilitas` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `k...', 0)
+#1 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `k...')
+#2 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `k...')
+#3 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `k...')
+#4 C:\xampp\htdocs\tb1\booking_hotel\app\Database\Migrations\2024-11-05-154729_CreateKamarFasilitasTable.php(20): CodeIgniter\Database\Forge->createTable('kamar_fasilitas')
+#5 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateKamarFasilitasTable->up()
+#6 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\tb1\booking_hotel\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-05 16:04:40 --> mysqli_sql_exception: Unknown column 'gambar' in 'field list' in C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `ka...', 0)
+#1 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ka...')
+#2 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ka...')
+#3 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1836): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ka...', NULL, false)
+#4 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2225): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\tb1\booking_hotel\app\Database\Seeds\KamarSeeder.php(35): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Database\Seeder.php(147): App\Database\Seeds\KamarSeeder->run()
+#7 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\tb1\booking_hotel\vendor\codeigniter4\framework\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\tb1\booking_hotel\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-11-05 17:05:52 --> ErrorException: Undefined property: App\Controllers\KamarController::$KamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$KamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:06:49 --> ErrorException: Undefined property: App\Controllers\KamarController::$kamarmodel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$kamarmodel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:06:49 --> ErrorException: Undefined property: App\Controllers\KamarController::$kamarmodel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$kamarmodel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:07:03 --> ErrorException: Undefined property: App\Controllers\KamarController::$KamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$KamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:07:04 --> ErrorException: Undefined property: App\Controllers\KamarController::$KamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$KamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:07:11 --> ErrorException: Undefined property: App\Controllers\KamarController::$kamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$kamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:07:12 --> ErrorException: Undefined property: App\Controllers\KamarController::$kamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$kamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:07:12 --> ErrorException: Undefined property: App\Controllers\KamarController::$kamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$kamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:07:12 --> ErrorException: Undefined property: App\Controllers\KamarController::$kamarModel
+[Method: GET, Route: kamar]
+in APPPATH\Controllers\KamarController.php on line 10.
+ 1 APPPATH\Controllers\KamarController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\KamarController::$kamarModel', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Controllers\\KamarController.php', 10)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:14:34 --> ErrorException: Undefined variable $k
+[Method: GET, Route: kamar]
+in APPPATH\Views\user\index.php on line 90.
+ 1 APPPATH\Views\user\index.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $k', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Views\\user\\index.php', 90)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Views\\user\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user/index', [], true)
+ 5 APPPATH\Controllers\KamarController.php(22): view('user/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:17:09 --> ErrorException: Undefined variable $kamars
+[Method: GET, Route: kamar]
+in APPPATH\Views\user\index.php on line 86.
+ 1 APPPATH\Views\user\index.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kamars', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Views\\user\\index.php', 86)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Views\\user\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user/index', [], true)
+ 5 APPPATH\Controllers\KamarController.php(22): view('user/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
+CRITICAL - 2024-11-05 17:17:10 --> ErrorException: Undefined variable $kamars
+[Method: GET, Route: kamar]
+in APPPATH\Views\user\index.php on line 86.
+ 1 APPPATH\Views\user\index.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kamars', 'C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Views\\user\\index.php', 86)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\tb1\\booking_hotel\\app\\Views\\user\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('user/index', [], true)
+ 5 APPPATH\Controllers\KamarController.php(22): view('user/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KamarController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KamarController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\tb1\\booking_hotel\\public\\index.php')
