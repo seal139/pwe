@@ -6,12 +6,24 @@ use CodeIgniter\Model;
 
 class KamarFasilitasModel extends Model
 {
-    protected $table = 'kamar_fasilitas';
-    protected $allowedFields = ['id_kamar', 'id_fasilitas']; 
+    protected $table = 'tblkamarfasilitas';
+    protected $primaryKey = ['id_kamar', 'id_fasilitas']; // Composite primary key
+    //protected $returnType       = 'object';
+    
+    protected $allowedFields = [
+        'id_kamar',
+        'id_fasilitas'
+    ];
 
-    // Mengambil semua data kamar fasilitas
-    public function getAllKamarFasilitas()
-    {
-        return $this->findAll();
-    }
+    // Validation rules can be added here
+    protected $validationRules = [
+        'id_kamar' => 'required|integer',
+        'id_fasilitas' => 'required|integer',
+    ];
+
+    // Validation messages can be added here
+    protected $validationMessages = [
+        'id_kamar' => 'Kamar is required.',
+        'id_fasilitas' => 'Fasilitas is required.',
+    ];
 }
