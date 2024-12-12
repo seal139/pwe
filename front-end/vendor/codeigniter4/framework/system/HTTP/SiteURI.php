@@ -400,6 +400,10 @@ class SiteURI extends URI
      */
     private function stringifyRelativePath($relativePath): string
     {
+        if (is_null($relativePath)) {
+            return ''; // Atau nilai default lainnya
+        }
+        
         if (is_array($relativePath)) {
             $relativePath = implode('/', $relativePath);
         }
