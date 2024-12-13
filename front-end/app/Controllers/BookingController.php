@@ -26,57 +26,8 @@ class BookingController extends BaseController
         $this->KamarFasilitasModel = new KamarFasilitasModel();
         $this->BookingModel = new BookingModel();
         $this->tamuModel = new TamuModel();
-        $this->UserModel = new UserModel();
     }
 
-    public function register()
-    {
-        return view('user/register');
-    }
-
-    public function storeUser()
-    {
-        $usermodel = new UserModel();
-        $data = [
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'no_telepon' => $this->request->getPost('no_telepon'),
-            'role' => 'tamu'
-        ];
-        $usermodel->save($data);
-        return view('user/login');
-    }
-
-    public function login()
-    {
-        return view('user/login');
-    }
-    
-    public function authenticate()
-    {
-        $usermodel = new UserModel();
-        $session = session();
-
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-
-        $user = $usermodel->getByEmail($email);
-
-        if ($user && password_verify($password, $user['password'])) {
-            $session->set([
-                'id_tamu' => $user['id'],
-                'user_name' => $user['nama'],
-                'user_role' => $user['role'],
-                'isLoggedIn' => true
-            ]);
-            return redirect()->to('/confirmlogin');
-        }else {
-            $session->setFlashdata('error', 'Invalid email or password');
-            return redirect()->to('/user/login');
-        }
-
-    }
 
     public function book($id_kamar)
     {
@@ -86,6 +37,10 @@ class BookingController extends BaseController
         //     return redirect()->to('/login');
         // }
 
+        if(is_null(session()->get('isLoggedIn'))) {
+            return redirect()->to('/user/login');
+        }
+        
         $kamar = $this->KamarModel->find($id_kamar);
 
         return view('kamar/booking', ['kamar' => $kamar]);
