@@ -94,21 +94,33 @@
 </head>
 <body>
   <div class="wrapper">
-    <form action="/user/register" method="post">  <h1>Register</h1>
+    <form action="/user/storeUser" method="post">  <h1>Register</h1>
+      
       <div class="input-box">
-        <input type="nama" placeholder="Nama" required>
+        <input type="text" placeholder="Username" name="username" required>
         <i class='bx bxs-user'></i>
       </div>
+
       <div class="input-box">
-        <input type="email" placeholder="Email" required>
-        <i class='bx bxs-envelope'></i> </div>
+        <input type="nama" placeholder="Nama" name="name" required>
+        <i class='bx bxs-user'></i>
+      </div>
+
       <div class="input-box">
-        <input type="no_telepon" placeholder="No Telepon" required>
-        <i class='bx bxs-phone'></i> </div>
+        <input type="email" placeholder="Email" name="email" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+
+      <div class="input-box">
+        <input type="no_telepon" placeholder="No Telepon" name="no_telepon" required>
+        <i class='bx bxs-phone'></i>
+      </div>
+      
       <div class="input-box">
         <input type="password" placeholder="Password" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
+
       <button type="submit" class="btn">Register</button>
       <div class="login-link">
         <p>Sudah punya akun? <a href="/user/login">Login</a></p>

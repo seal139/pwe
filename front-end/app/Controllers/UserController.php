@@ -15,16 +15,43 @@ class UserController extends Controller
 
     public function storeUser()
     {
-        $usermodel = new UserModel();
-        $data = [
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'no_telepon' => $this->request->getPost('no_telepon'),
-            'role' => 'tamu'
+        $session = session();
+
+        $usermodel = new UserModel();        
+        $data1 = [            
+            'username' => $this->request->getPost('username'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
+            'nama'     => $this->request->getPost('name'),
+            'role'     => 0,
         ];
-        $usermodel->save($data);
-        return view('user/storeUser');
+        if (!$usermodel->save($data1)) {
+            $errors = $usermodel->errors();
+
+            // Log the errors
+            log_message('error', 'UserModel Save Failed: ' . json_encode($errors));
+        }
+
+        $tamumodel = new TamuModel();
+        $data2 = [
+            'nama' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'no_telpon' => $this->request->getPost('no_telepon'),
+        ];
+        if (!$tamumodel->save($data2)) {
+            $errors = $tamumodel->errors();
+
+            // Log the errors
+            log_message('error', 'Tamu Save Failed: ' . json_encode($errors));
+        }
+
+       
+
+        $session->set([
+            'user_name' => $this->request->getPost('name'),
+            'user_role' => 0,
+            'isLoggedIn' => true
+        ]);
+        return redirect()->to('/');
     }
 
     public function login()
@@ -53,7 +80,6 @@ class UserController extends Controller
 
         if ($user && password_verify($password, $user['password'])) {
             $session->set([
-                'id_tamu' => $user['id'],
                 'user_name' => $user['nama'],
                 'user_role' => $user['role'],
                 'isLoggedIn' => true
