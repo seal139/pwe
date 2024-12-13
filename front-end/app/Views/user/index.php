@@ -78,7 +78,14 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">            
             <li class="nav-item">
-                <a class="nav-link" href="/user/login">Login</a>
+            <?php
+                if (is_null(session()->get('isLoggedIn'))) { ?>
+                    <a class="nav-link" href="/user/login">Login</a>
+                <?php } else { ?>
+                    <a class="nav-link" href="/user/logout"><?= session()->get('user_name') ?> - Logout</a>
+                <?php } 
+            ?>
+                
             </li>
         </ul>
     </div>

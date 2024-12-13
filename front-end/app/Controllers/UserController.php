@@ -31,16 +31,25 @@ class UserController extends Controller
     {
         return view('user/login');
     }
+
+    public function logout() {
+        session()->destroy();
+        return redirect()->to('/');
+    }
     
     public function authenticate()
     {
         $usermodel = new UserModel();
         $session = session();
 
-        $email = $this->request->getPost('email');
+        $email    = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        $user = $usermodel->getByEmail($email);
+        $user = $usermodel->where([
+            'username' => $email,
+        ])->first();
+
+        echo ($user['username']);
 
         if ($user && password_verify($password, $user['password'])) {
             $session->set([
@@ -49,10 +58,10 @@ class UserController extends Controller
                 'user_role' => $user['role'],
                 'isLoggedIn' => true
             ]);
-            return redirect()->to('/user/authenticate');
+            return redirect()->to('/');
         }else {
             $session->setFlashdata('error', 'Invalid email or password');
-            return redirect()->to('/user/login');
+            return redirect()->to('/user/register');
         }
 
     }
