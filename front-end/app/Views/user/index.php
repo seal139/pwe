@@ -151,6 +151,38 @@
     </div>
 </div>  
 
+<div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <h3>What is the check-in and check-out time?</h3>
+            <p>Check-in starts at 2:00 PM, and check-out is until 12:00 PM.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do you offer airport transportation?</h3>
+            <p>Yes, we provide airport transportation upon request. Additional charges may apply.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is breakfast included in the room rate?</h3>
+            <p>Yes, complimentary breakfast is included with your booking.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Are pets allowed in the hotel?</h3>
+            <p>Unfortunately, pets are not allowed at our property.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Disclaimer</h1>
+        <div class="disclaimer">
+            <p>The information provided on this website is for general informational purposes only. While we strive to ensure the accuracy of the details, we cannot guarantee that all information is current or error-free. Please contact our hotel directly for the most up-to-date and specific information.</p>
+            <p>We are not responsible for any loss or damage resulting from the use of the information provided on this website. By using our website, you agree to these terms.</p>
+        </div>
+    </div>
+
     <!-- Tambahkan link Bootstrap JS dan jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
